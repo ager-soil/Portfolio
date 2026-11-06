@@ -1,0 +1,123 @@
+:root {
+  --bg-color: #0b0f19;
+  --card-bg: rgba(17, 24, 39, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --primary-glow: #38bdf8;
+  --secondary-glow: #818cf8;
+  --accent-green: #34d399;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  position: relative;
+  line-height: 1.6;
+}
+
+/* Three.js Background Canvas */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Preloader styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #07090e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.loader-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(56, 189, 248, 0.1);
+  border-top-color: var(--primary-glow);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 15px auto;
+}
+
+.loader-text {
+  font-family: var(--font-heading);
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Typography Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.highlight-text {
+  background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Sections Layout */
+.section {
+  min-height: 100vh;
+  padding: 100px 8% 60px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
