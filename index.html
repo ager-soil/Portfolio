@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Portfolio | AgTech & Geoinformatics</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Custom CSS Files -->
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/3d-card.css" />
+</head>
+<body class="dark-theme">
+
+  <!-- Interactive Three.js Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Preloader Screen -->
+  <div id="preloader">
+    <div class="loader-content">
+      <div class="loader-spinner"></div>
+      <div class="loader-text">Loading Experience... <span id="loader-percent">0%</span></div>
+    </div>
+  </div>
+
+  <!-- Fixed Glass Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="glass-nav">
+      <a href="#hero" class="nav-logo">Dev<span>.Agri</span></a>
+      <ul class="nav-pills">
+        <li><a href="#hero" class="nav-pill active"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
+        <li><a href="#skills-3d" class="nav-pill"><i class="fa-solid fa-microchip"></i> <span>Skills & Trading Card</span></a></li>
+        <li><a href="#projects" class="nav-pill"><i class="fa-solid fa-code-fork"></i> <span>Projects</span></a></li>
+        <li><a href="#contact" class="nav-pill"><i class="fa-solid fa-paper-plane"></i> <span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="section hero-section">
+      <div class="hero-container">
+        <div class="hero-badge">
+          <i class="fa-solid fa-graduation-cap"></i> Sister Nivedita University
+        </div>
+        <h1 class="hero-title">
+          Hi, I'm a <br />
+          <span id="role-rotator" class="highlight-text">Geoinformatics Specialist</span>
+        </h1>
+        <p class="hero-subtitle">
+          Pursuing <strong>BSc Honors in Agriculture</strong> at Sister Nivedita University. 
+          Bridging standard web technologies with dynamic geoinformatics, system simulation, smart climate agriculture, and modern baseline hydroponics.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-diagram-project"></i> View Projects</a>
+          <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-envelope"></i> Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Interactive Card & Skill Matrix Section -->
+    <section id="skills-3d" class="section skills-section">
+      <div class="section-header">
+        <h2>Interactive Profile & Competencies</h2>
+        <p>3D Trading Card showing mastered tech stacks and ongoing developments.</p>
+      </div>
+
+      <div class="skills-grid">
+        
+        <!-- Interactive 3D Trading Card Component -->
+        <div class="card-3d-wrapper">
+          <div class="card-3d" id="trading-card">
+            <div class="card-glass-glow"></div>
+            
+            <div class="card-header">
+              <span class="card-tag">Agri-Tech Developer</span>
+              <i class="fa-solid fa-seedling card-icon"></i>
+            </div>
+            
+            <div class="card-avatar-container">
+              <div class="avatar-placeholder">
+                <i class="fa-solid fa-user-astronaut"></i>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <h3 class="card-name">[ Your Name ]</h3>
+              <p class="card-subtext">BSc Hons. Ag | SNU</p>
+
+              <div class="card-stats">
+                <div class="stat-item">
+                  <span class="stat-label">Web Dev & JS</span>
+                  <div class="stat-bar"><div class="stat-fill" style="width: 85%;"></div></div>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Geoinformatics</span>
+                  <div class="stat-bar"><div class="stat-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Hydroponics</span>
+                  <div class="stat-bar"><div class="stat-fill" style="width: 75%;"></div></div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="card-footer">
+              <span>HOVER / TILT CARD</span>
+              <i class="fa-solid fa-rotate"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detailed Skill Breakdown Matrix -->
+        <div class="skills-matrix">
+          
+          <!-- Mastered Skills -->
+          <div class="skills-box glass-card">
+            <h3><i class="fa-solid fa-circle-check icon-green"></i> Skills Learned</h3>
+            <div class="pill-cloud">
+              <span class="skill-pill"><i class="fa-brands fa-html5"></i> Web Development</span>
+              <span class="skill-pill"><i class="fa-solid fa-earth-americas"></i> Geoinformatics</span>
+              <span class="skill-pill"><i class="fa-brands fa-js"></i> JavaScript</span>
+              <span class="skill-pill"><i class="fa-solid fa-network-wired"></i> System Simulation</span>
+              <span class="skill-pill"><i class="fa-solid fa-droplet"></i> Baseline Hydroponics</span>
+            </div>
+          </div>
+
+          <!-- Skills Currently Learning -->
+          <div class="skills-box glass-card">
+            <h3><i class="fa-solid fa-spinner fa-spin icon-blue"></i> Currently Learning</h3>
+            <div class="pill-cloud">
+              <span class="skill-pill learning"><i class="fa-solid fa-cloud-sun-rain"></i> Smart Climate Agriculture</span>
+              <span class="skill-pill learning"><i class="fa-solid fa-code"></i> Advanced Web Development</span>
+              <span class="skill-pill learning"><i class="fa-brands fa-node-js"></i> Advanced JavaScript</span>
+              <span class="skill-pill learning"><i class="fa-solid fa-laptop-code"></i> Code Editing</span>
+              <span class="skill-pill learning"><i class="fa-solid fa-satellite"></i> Google Earth Engine</span>
+              <span class="skill-pill learning"><i class="fa-solid fa-cubes"></i> Code Integration & Dev</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Native Project Showcase Section -->
+    <section id="projects" class="section projects-section">
+      <div class="section-header">
+        <h2>Featured Projects</h2>
+        <p>Custom projects native array rendering dynamically from JavaScript.</p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="geoinformatics">Geoinformatics</button>
+        <button class="filter-btn" data-filter="agri">AgriTech</button>
+      </div>
+
+      <!-- Projects Container Grid -->
+      <div class="projects-grid" id="projects-container">
+        <!-- Javascript dynamic render populates project cards here -->
+        <noscript>
+          <p>Please enable JavaScript to view projects showcase.</p>
+        </noscript>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="glass-card contact-card">
+        <h2>Let's Collaborate</h2>
+        <p>Interested in smart climate agriculture, GIS spatial analysis, or web integration?</p>
+        <a href="mailto:your-email@example.com" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Send an Email</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Student Portfolio | Sister Nivedita University</p>
+  </footer>
+
+  <!-- External CDN Libraries (Three.js & GSAP) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- Application Logic Scripts -->
+  <script src="js/projects-data.js"></script>
+  <script src="js/3d-card.js"></script>
+  <script src="js/dynamic-rotator.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
