@@ -1,27 +1,6 @@
 // General UI Logic, Project Dynamic Rendering, Active Nav Highlight & Loader
 document.addEventListener('DOMContentLoaded', () => {
   
-  // --- 1. Preloader Progress Simulation ---
-  const preloader = document.getElementById('preloader');
-  const loaderPercent = document.getElementById('loader-percent');
-  
-  if (preloader && loaderPercent) {
-    let progress = 0;
-    const interval = setInterval(() => {
-      progress += Math.floor(Math.random() * 20) + 10;
-      if (progress >= 100) {
-        progress = 100;
-        loaderPercent.textContent = `100%`;
-        clearInterval(interval);
-        setTimeout(() => {
-          preloader.classList.add('fade-out');
-        }, 300);
-      } else {
-        loaderPercent.textContent = `${progress}%`;
-      }
-    }, 100);
-  }
-
   // --- 2. Dynamic Project Card Renderer ---
   const container = document.getElementById('projects-container');
   const filterBtns = document.querySelectorAll('.filter-btn');
