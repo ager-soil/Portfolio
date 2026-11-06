@@ -39,51 +39,6 @@ body {
   pointer-events: none;
 }
 
-/* Preloader styles */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #07090e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-#preloader.fade-out {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader-content {
-  text-align: center;
-}
-
-.loader-spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(56, 189, 248, 0.1);
-  border-top-color: var(--primary-glow);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 15px auto;
-}
-
-.loader-text {
-  font-family: var(--font-heading);
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  letter-spacing: 1px;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
 /* Typography Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
@@ -93,6 +48,7 @@ h1, h2, h3, h4, h5, h6 {
 .highlight-text {
   background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
