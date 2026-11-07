@@ -1,74 +1,149 @@
-// Advanced Animated Rotating Text Preloader with Web Audio API Sound Effects
+// Casino Decrypting Preloader & Web Audio API Space Sound Engine
 document.addEventListener('DOMContentLoaded', () => {
   const preloader = document.getElementById('preloader');
-  const rotatingLoaderText = document.getElementById('preloader-rotating-text');
+  const casinoTextElem = document.getElementById('casino-text');
   
-  if (!preloader) return;
+  const targetText = "INITIALIZING WORKSPACE";
+  const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789%#@&$*";
+  
+  let frame = 0;
+  const totalFramesPerChar = 4;
+  let revealedChars = 0;
 
-  const loadingPhrases = [
-    "Initializing Geoinformatics Systems...",
-    "Calibrating Hydroponics Telemetry...",
-    "Loading Smart Climate Ag Modules...",
-    "Compiling Web Development Assets...",
-    "Welcome to AgTech Portfolio."
-  ];
+  // --- 1. Silent Casino Scramble Animation ---
+  const scrambleInterval = setInterval(() => {
+    if (!casinoTextElem) return;
 
-  let phraseIdx = 0;
-
-  // Web Audio API Synthesizer for Sound Effects (Zero external audio files required!)
-  const playSound = (type) => {
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
-
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      if (type === 'tick') {
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(600, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(800, ctx.currentTime + 0.05);
-        gain.gain.setValueAtTime(0.05, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.05);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.05);
-      } else if (type === 'complete') {
-        // Uplifting chime
-        osc.type = 'triangle';
-        osc.frequency.setValueAtTime(440, ctx.currentTime);
-        osc.frequency.setValueAtTime(554.37, ctx.currentTime + 0.1);
-        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.2);
-        gain.gain.setValueAtTime(0.1, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.5);
+    let output = "";
+    
+    for (let i = 0; i < targetText.length; i++) {
+      if (targetText[i] === " ") {
+        output += " ";
+        continue;
       }
-    } catch (e) {
-      // Audio context safeguard
+      
+      if (i < revealedChars) {
+        output += targetText[i];
+      } else {
+        const randomChar = charset[Math.floor(Math.random() * charset.length)];
+        output += randomChar;
+      }
+    }
+
+    casinoTextElem.textContent = output;
+
+    frame++;
+    if (frame % totalFramesPerChar === 0) {
+      revealedChars++;
+    }
+
+    if (revealedChars > targetText.length) {
+      clearInterval(scrambleInterval);
+      casinoTextElem.textContent = targetText;
+      
+      setTimeout(() => {
+        if (preloader) {
+          preloader.classList.add('fade-out');
+        }
+      }, 500);
+    }
+  }, 50);
+
+  // --- 2. Ambient Deep Space Audio Synthesizer ---
+  let audioCtx = null;
+  let spaceDroneOsc1 = null;
+  let spaceDroneOsc2 = null;
+  let noiseFilter = null;
+  let isAudioPlaying = false;
+
+  const initSpaceAudio = () => {
+    if (audioCtx) return;
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    audioCtx = new AudioContext();
+
+    // Deep Sub Space Drone (Low Sine Wave)
+    spaceDroneOsc1 = audioCtx.createOscillator();
+    const gain1 = audioCtx.createGain();
+    spaceDroneOsc1.type = 'sine';
+    spaceDroneOsc1.frequency.setValueAtTime(55, audioCtx.currentTime); // A1 pitch
+    gain1.gain.setValueAtTime(0.08, audioCtx.currentTime);
+
+    // Cosmic Atmosphere Resonance (Subtle Slow LFO Detune)
+    spaceDroneOsc2 = audioCtx.createOscillator();
+    const gain2 = audioCtx.createGain();
+    spaceDroneOsc2.type = 'triangle';
+    spaceDroneOsc2.frequency.setValueAtTime(110, audioCtx.currentTime);
+    gain2.gain.setValueAtTime(0.03, audioCtx.currentTime);
+
+    // Lowpass filter to simulate cosmic vacuum rumble
+    noiseFilter = audioCtx.createBiquadFilter();
+    noiseFilter.type = 'lowpass';
+    noiseFilter.frequency.setValueAtTime(220, audioCtx.currentTime);
+
+    spaceDroneOsc1.connect(gain1);
+    spaceDroneOsc2.connect(gain2);
+    gain1.connect(noiseFilter);
+    gain2.connect(noiseFilter);
+    noiseFilter.connect(audioCtx.destination);
+
+    spaceDroneOsc1.start();
+    spaceDroneOsc2.start();
+    isAudioPlaying = true;
+  };
+
+  // UI Interactive Sound Effects (Hover & Click Space Blips)
+  window.playUiSound = (type) => {
+    if (!audioCtx || audioCtx.state === 'suspended') return;
+
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+
+    if (type === 'hover') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(300, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.08);
+      gain.gain.setValueAtTime(0.015, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.08);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.08);
+    } else if (type === 'click') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(800, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.12);
+      gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.12);
     }
   };
 
-  // Rotate preloader text every 700ms
-  const textInterval = setInterval(() => {
-    phraseIdx++;
-    if (phraseIdx < loadingPhrases.length) {
-      if (rotatingLoaderText) {
-        rotatingLoaderText.style.opacity = 0;
-        setTimeout(() => {
-          rotatingLoaderText.textContent = loadingPhrases[phraseIdx];
-          rotatingLoaderText.style.opacity = 1;
-        }, 150);
+  // Sound Toggle Controls
+  const soundBtn = document.getElementById('sound-toggle-btn');
+  const soundIcon = document.getElementById('sound-icon');
+
+  if (soundBtn) {
+    soundBtn.addEventListener('click', () => {
+      if (!audioCtx) {
+        initSpaceAudio();
+        if (soundIcon) soundIcon.className = "fa-solid fa-volume-high";
+      } else if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+        isAudioPlaying = true;
+        if (soundIcon) soundIcon.className = "fa-solid fa-volume-high";
+      } else if (audioCtx.state === 'running') {
+        audioCtx.suspend();
+        isAudioPlaying = false;
+        if (soundIcon) soundIcon.className = "fa-solid fa-volume-xmark";
       }
-      playSound('tick');
-    } else {
-      clearInterval(textInterval);
-      playSound('complete');
-      setTimeout(() => {
-        preloader.classList.add('fade-out');
-      }, 400);
-    }
-  }, 700);
+    });
+  }
+
+  // Attach hover/click sound listeners to links and buttons across the portfolio
+  document.querySelectorAll('a, button, .card-3d, .skill-pill').forEach(elem => {
+    elem.addEventListener('mouseenter', () => window.playUiSound('hover'));
+    elem.addEventListener('click', () => window.playUiSound('click'));
+  });
 });
