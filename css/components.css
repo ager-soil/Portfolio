@@ -361,3 +361,86 @@ footer {
     display: none;
   }
 }
+
+/* Casino / Decrypting Text Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #05070c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+}
+
+#preloader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.preloader-hud-ring {
+  width: 70px;
+  height: 70px;
+  border: 2px dashed rgba(56, 189, 248, 0.3);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: hudSpin 3s linear infinite;
+}
+
+.hud-inner {
+  width: 45px;
+  height: 45px;
+  border: 2px solid var(--primary-glow);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: hudSpinReverse 1.5s ease-in-out infinite;
+}
+
+.preloader-text-container {
+  font-family: 'Outfit', monospace;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 4px;
+  min-height: 40px;
+  background: linear-gradient(135deg, var(--primary-glow), #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
+
+.preloader-subtext {
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.sound-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes hudSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes hudSpinReverse {
+  to { transform: rotate(-360deg); }
+}
