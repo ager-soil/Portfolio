@@ -1,4 +1,4 @@
-# Interactive Portfolio
+# Advanced Interactive Portfolio
 
 An interactive, responsive, single-page developer portfolio designed for GitHub Pages. Built for an agriculture and technology developer studying **B. Sc. (Hons.) in Agriculture at Sister Nivedita University**, combining web development, geoinformatics, system simulation, baseline hydroponics, and smart climate agriculture research.
 
