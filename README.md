@@ -83,7 +83,5 @@ Open `js/projects-data.js` and add a new object into the `projectsData` array:
 ---
 
 ## 📌 Planned Enhancements (Roadmap)
-
-* [ ] Add dynamic animated text / custom rotating text preloader.
 * [ ] Integrate Google Earth Engine raster dataset embeds into project showcases.
 * [ ] Add interactive baseline hydroponics telemetry preview modal.
