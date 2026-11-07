@@ -1,6 +1,5 @@
 // ==========================================
-// MODULAR SOUND ENGINE (sound.js)
-// Easily add or modify sounds in the future!
+// MODULAR SOUND ENGINE (sound.js) - MAX VOLUME
 // ==========================================
 
 class SoundEngine {
@@ -10,7 +9,7 @@ class SoundEngine {
     this.masterGain = null;
   }
 
-  // Initialize Web Audio Context with higher volume master gain
+  // Initialize Web Audio Context with maximum volume gain
   init() {
     if (this.isInitialized) return;
     
@@ -18,9 +17,9 @@ class SoundEngine {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       this.audioCtx = new AudioContext();
 
-      // Master Gain Node set to high volume (louder sound)
+      // Master Gain Node set to high volume (0.85 = maximum safe volume)
       this.masterGain = this.audioCtx.createGain();
-      this.masterGain.gain.setValueAtTime(0.4, this.audioCtx.currentTime); // Volume level (0.0 to 1.0)
+      this.masterGain.gain.setValueAtTime(0.85, this.audioCtx.currentTime); 
       this.masterGain.connect(this.audioCtx.destination);
 
       this.isInitialized = true;
@@ -30,37 +29,65 @@ class SoundEngine {
     }
   }
 
-  // 1. Ambient Space Drone (Autoplays on website load)
+  // 1. Loud Ambient Space Drone (Autoplays background space sound)
   startAmbientSpaceDrone() {
     if (!this.audioCtx) return;
 
-    // Dual-oscillator deep cosmic space drone for rich atmosphere
     const osc1 = this.audioCtx.createOscillator();
     const osc2 = this.audioCtx.createOscillator();
+    const osc3 = this.audioCtx.createOscillator();
     const droneGain = this.audioCtx.createGain();
     const filter = this.audioCtx.createBiquadFilter();
 
     osc1.type = 'sawtooth'; 
-    osc1.frequency.setValueAtTime(65.41, this.audioCtx.currentTime); // C2 note
+    osc1.frequency.setValueAtTime(55.00, this.audioCtx.currentTime); // A1 note
 
-    osc2.type = 'sine';
-    osc2.frequency.setValueAtTime(130.81, this.audioCtx.currentTime); // C3 note
+    osc2.type = 'square'; 
+    osc2.frequency.setValueAtTime(110.00, this.audioCtx.currentTime); // A2 note
 
-    droneGain.gain.setValueAtTime(0.25, this.audioCtx.currentTime);
+    osc3.type = 'sine';
+    osc3.frequency.setValueAtTime(82.41, this.audioCtx.currentTime); // E2 note
+
+    droneGain.gain.setValueAtTime(0.5, this.audioCtx.currentTime);
 
     filter.type = 'lowpass';
-    filter.frequency.setValueAtTime(450, this.audioCtx.currentTime);
+    filter.frequency.setValueAtTime(800, this.audioCtx.currentTime); 
 
     osc1.connect(filter);
     osc2.connect(filter);
+    osc3.connect(filter);
     filter.connect(droneGain);
     droneGain.connect(this.masterGain);
 
     osc1.start();
     osc2.start();
+    osc3.start();
   }
 
-  // 2. UI Interactive Hover Sound Effect
+  // 2. Distinct Preloader "Tick-Tick-Tick" Sound
+  playPreloaderTick() {
+    if (!this.audioCtx) return;
+    if (this.audioCtx.state === 'suspended') this.audioCtx.resume();
+
+    const osc = this.audioCtx.createOscillator();
+    const gain = this.audioCtx.createGain();
+
+    // Sharp metallic clock/gear tick
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(1200, this.audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(400, this.audioCtx.currentTime + 0.03);
+
+    gain.gain.setValueAtTime(0.35, this.audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.03);
+
+    osc.connect(gain);
+    gain.connect(this.masterGain);
+
+    osc.start();
+    osc.stop(this.audioCtx.currentTime + 0.03);
+  }
+
+  // 3. High-Volume UI Interactive Hover Sound
   playHover() {
     if (!this.audioCtx) return;
     if (this.audioCtx.state === 'suspended') this.audioCtx.resume();
@@ -68,21 +95,21 @@ class SoundEngine {
     const osc = this.audioCtx.createOscillator();
     const gain = this.audioCtx.createGain();
 
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(440, this.audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(880, this.audioCtx.currentTime + 0.08);
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(300, this.audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(600, this.audioCtx.currentTime + 0.1);
 
-    gain.gain.setValueAtTime(0.15, this.audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.3, this.audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.1);
 
     osc.connect(gain);
     gain.connect(this.masterGain);
 
     osc.start();
-    osc.stop(this.audioCtx.currentTime + 0.08);
+    osc.stop(this.audioCtx.currentTime + 0.1);
   }
 
-  // 3. UI Interactive Click Sound Effect
+  // 4. High-Volume UI Interactive Click Sound
   playClick() {
     if (!this.audioCtx) return;
     if (this.audioCtx.state === 'suspended') this.audioCtx.resume();
@@ -90,11 +117,11 @@ class SoundEngine {
     const osc = this.audioCtx.createOscillator();
     const gain = this.audioCtx.createGain();
 
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(523.25, this.audioCtx.currentTime); // C5
-    osc.frequency.exponentialRampToValueAtTime(261.63, this.audioCtx.currentTime + 0.15); // C4
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(600, this.audioCtx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(200, this.audioCtx.currentTime + 0.15);
 
-    gain.gain.setValueAtTime(0.3, this.audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.45, this.audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + 0.15);
 
     osc.connect(gain);
@@ -104,9 +131,7 @@ class SoundEngine {
     osc.stop(this.audioCtx.currentTime + 0.15);
   }
 
-  // ==========================================
-  // FUTURE-PROOFING: Add any new sound easily!
-  // ==========================================
+  // Future-proofing custom sound method
   playCustomSound(freq = 440, type = 'sine', duration = 0.2) {
     if (!this.audioCtx) return;
     if (this.audioCtx.state === 'suspended') this.audioCtx.resume();
@@ -117,7 +142,7 @@ class SoundEngine {
     osc.type = type;
     osc.frequency.setValueAtTime(freq, this.audioCtx.currentTime);
 
-    gain.gain.setValueAtTime(0.25, this.audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.4, this.audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, this.audioCtx.currentTime + duration);
 
     osc.connect(gain);
@@ -131,11 +156,10 @@ class SoundEngine {
 // Global Sound Engine Instance
 const sounds = new SoundEngine();
 
-// Auto-initialize on page load
+// Auto-initialize on page load with browser policy unlock safeguards
 window.addEventListener('DOMContentLoaded', () => {
   sounds.init();
 
-  // Browser Autoplay Policy Bypass: Unlocks audio instantly on the user's first click or keystroke anywhere on the page
   const unlockAudio = () => {
     sounds.init();
     window.removeEventListener('click', unlockAudio);
@@ -144,7 +168,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('click', unlockAudio);
   window.addEventListener('keydown', unlockAudio);
 
-  // Automatically attach hover and click sounds to all interactive UI components
   setTimeout(() => {
     document.querySelectorAll('a, button, .card-3d, .skill-pill, .filter-btn').forEach(elem => {
       elem.addEventListener('mouseenter', () => sounds.playHover());
