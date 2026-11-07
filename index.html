@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Developer Portfolio | AgTech & Geoinformatics</title>
+  <title>Developer Portfolio</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,16 +20,28 @@
 </head>
 <body class="dark-theme">
 
-  <!-- Animated Rotating Text Preloader -->
+<!-- Casino / Decrypting Text Preloader -->
   <div id="preloader">
     <div class="preloader-content">
-      <div class="preloader-spinner-ring"></div>
-      <div class="preloader-text-wrapper">
-        <span id="preloader-rotating-text">Initializing Infospace...</span>
+      <div class="preloader-hud-ring">
+        <div class="hud-inner"></div>
       </div>
+      <div class="preloader-text-container">
+        <span id="casino-text">INITIALIZING WORKSPACE</span>
+      </div>
+      <div class="preloader-subtext">SYSTEM BOOT IN PROGRESS</div>
     </div>
   </div>
 
+  <!-- Ambient Sound Toggle in Navbar -->
+  <!-- Place inside your nav-pills UL in <nav class="glass-nav"> -->
+  <li>
+    <button id="sound-toggle-btn" class="nav-pill sound-btn" title="Toggle Ambient Space Sound">
+      <i class="fa-solid fa-volume-xmark" id="sound-icon"></i>
+      <span>Space Audio</span>
+    </button>
+  </li>
+  
   <!-- Interactive Three.js Background Canvas -->
   <canvas id="bg-canvas"></canvas>
 
