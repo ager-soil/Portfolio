@@ -1,4 +1,4 @@
-Developer Portfolio
+###Developer Portfolio
 
 A personal interactive portfolio showcasing my education and interests.
 
