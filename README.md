@@ -35,6 +35,7 @@ portfolio/
 │
 ├── index.html
 ├── README.md
+├── PORTFOLIO_MEMORY_CONTEXT.md
 ├── favicon.svg
 │
 ├── css/
@@ -48,7 +49,7 @@ portfolio/
     ├── dynamic-rotator.js
     ├── projects-data.js
     └── app.js
-
+    
 ## Running the Project Locally
 
 This is currently a frontend-only static website.
