@@ -621,12 +621,6 @@ body {
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    #digital-rain {
-        opacity: 0.25;
-    }
-}
-
 
 /* =================================
    MY JOURNEY — UNIFIED TIMELINE
