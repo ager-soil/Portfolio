@@ -1,7 +1,6 @@
 // Dynamic Text Rotator using GSAP Animations
 document.addEventListener('DOMContentLoaded', () => {
   const roles = [
-    "Geoinformatics Specialist",
     "AgTech Developer",
     "Web Developer",
     "System Simulator",
