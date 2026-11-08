@@ -1,87 +1,169 @@
-# Advanced Interactive Portfolio
 
-An interactive, responsive, single-page developer portfolio designed for GitHub Pages. Built for an agriculture and technology developer studying **B. Sc. (Hons.) in Agriculture at Sister Nivedita University**, combining web development, geoinformatics, system simulation, baseline hydroponics, and smart climate agriculture research.
+# Abhinaba Chatterjee — Developer Portfolio
 
----
+A personal interactive portfolio showcasing my education, interests, projects, and exploration across web development, agriculture, cybersecurity, hydroponics, and geoinformatics.
 
-## 🌟 Key Features
+## About the Project
 
-* **3D Interactive Profile Card:** Hover and tilt perspective effect powered by CSS 3D transforms with specular dynamic lighting.
-* **Three.js Particle Canvas:** High-performance WebGL animated background canvas responding dynamically to cursor movement.
-* **GSAP Text Rotator:** Dynamic header switching between core domains and specializations.
-* **Native Project Gallery:** Pure JavaScript data-driven dynamic layout (`projects-data.js`) with responsive category filtering.
-* **Glassmorphism Theme:** Dark modern aesthetic with translucent panels and glowing CSS badges.
-* **GitHub Pages Ready:** Zero build setup or compiler required; works out of the box using pure frontend static files.
+This portfolio is designed to present my academic journey, technical interests, and projects through a modern and interactive web experience.
 
----
+It features a dark cosmic-inspired aesthetic, glassmorphism UI, glowing visual elements, animations, and interactive components.
 
-## 🛠️ Technology Stack
+## Features
 
-| Component | Technology / Library |
-| :--- | :--- |
-| **Markup & Layout** | HTML5 (Semantic Structure) |
-| **Styles** | CSS3 (Flexbox, CSS Grid, Glassmorphism, CSS Variables, 3D Transforms) |
-| **Logic & Data** | Vanilla JavaScript (ES6+ Module Pattern) |
-| **3D & Canvas** | [Three.js (r128 via CDN)](https://threejs.org/) |
-| **Animations** | [GSAP (v3.12.2 via CDN)](https://greensock.com/gsap/) |
-| **Icons & Fonts** | FontAwesome 6, Google Fonts (`Outfit`, `Inter`) |
+- Responsive portfolio design
+- Dark cosmic-inspired visual theme
+- Glassmorphism UI and glowing effects
+- Animated role/title rotator
+- Interactive 3D profile card
+- Project showcase with category filters
+- Scroll-aware navigation highlighting
+- Unified **My Journey** timeline
+- Custom SVG favicon
+- Interactive visual elements and animations
 
----
+## About Me
 
-## 📁 File Structure
+I am pursuing a **B.Sc. (Honours) in Agriculture** at **Sister Nivedita University**, with an expected graduation year of 2028.
+
+My interests extend beyond agriculture into technology, creative work, and emerging fields.
+
+### Areas of Interest
+
+- Agriculture — 2024
+- Cybersecurity — 2024
+- Art — 2025
+- Hydroponics — 2026
+- Geoinformatics — 2026
+
+## Education
+
+| Year | Academic Milestone |
+|---|---|
+| 2022 | Completed Class 10 at St. Mary's School, Malda |
+| 2024 | Completed Class 12 at Sister Nivedita Public School |
+| 2024–Present | B.Sc. (Honours) in Agriculture at Sister Nivedita University |
+| 2028 | Expected graduation |
+
+## My Journey
+
+The portfolio combines academic milestones and personal interests into one continuous timeline.
+
+| Year | Journey |
+|---|---|
+| 2022 | Class 10 — St. Mary's School, Malda |
+| 2024 | Class 12 — Sister Nivedita Public School |
+| 2024 | Joined Sister Nivedita University |
+| 2024 | Started exploring Agriculture and Cybersecurity |
+| 2025 | Developed an interest in Art |
+| 2026 | Started exploring Hydroponics and Geoinformatics |
+| 2028 | Expected completion of B.Sc. (Honours) in Agriculture |
+
+## Technology Stack
+
+The portfolio uses modern frontend technologies and animation libraries.
+
+- **HTML5** — Website structure
+- **CSS3** — Styling, responsive layouts, and visual effects
+- **JavaScript** — Interactive functionality
+- **Three.js** — 3D visual effects
+- **GSAP** — Animations and transitions
+- **Google Fonts** — Typography
+- **Font Awesome** — Icons
+
+External libraries are currently loaded through CDN links.
+
+## Project Structure
 
 ```text
 portfolio/
-├── index.html               # Main application layout and semantic entry point
-├── README.md                # Project documentation
+│
+├── index.html
+├── README.md
+├── PORTFOLIO_MEMORY_CONTEXT.md
+├── favicon.svg
+│
 ├── css/
-│   ├── main.css             # Global reset, dark theme variables, typography
-│   ├── components.css       # Nav pills, glass cards, project buttons, badges
-│   └── 3d-card.css          # CSS 3D card tilt & specular light glow
+│   ├── main.css
+│   ├── components.css
+│   └── 3d-card.css
+│
 └── js/
-    ├── app.js               # Dynamic card rendering, filter buttons, scroll highlight
-    ├── 3d-card.js           # Three.js particle canvas & mouse tilt listener
-    ├── dynamic-rotator.js   # GSAP dynamic role rotator logic
-    └── projects-data.js     # Native JSON array for project items
+    ├── preloader.js
+    ├── 3d-card.js
+    ├── dynamic-rotator.js
+    ├── projects-data.js
+    └── app.js
 ```
 
----
+*Note: The project structure may evolve as new features are introduced.*
 
-## 🚀 How to Run Locally & Host on GitHub Pages
+## Running the Project Locally
 
-### Running Locally
-1. Clone or download this repository:
-   ```bash
-   git clone https://github.com/your-username/portfolio.git
-   ```
-2. Open `index.html` directly in any web browser, or launch using VS Code's **Live Server** extension.
+This is currently a frontend-only static website.
 
-### Hosting on GitHub Pages
-1. Push your code to your GitHub repository.
-2. Go to **Settings** > **Pages** in your repository.
-3. Under **Build and deployment**, set the Branch to `main` (or `master`) and folder to `/ (root)`.
-4. Click **Save**. Your site will be live within a couple of minutes!
+1. Clone or download this repository.
+2. Open the project folder in your code editor.
+3. Open `index.html` in your browser.
 
----
+Alternatively, use the **Live Server** extension in Visual Studio Code for local development.
 
-## 📝 How to Add New Projects
+No backend or build process is currently required.
 
-Open `js/projects-data.js` and add a new object into the `projectsData` array:
+## Favicon
 
-```javascript
-{
-  id: 5,
-  title: "Your Project Title",
-  category: "geoinformatics", // Category key: "web", "geoinformatics", or "agri"
-  tags: ["Geoinformatics", "Google Earth Engine"],
-  description: "Brief summary of the project and technologies applied.",
-  liveUrl: "https://your-live-demo-link.com",
-  githubUrl: "https://github.com/your-username/project-repo"
-}
+The portfolio uses a custom SVG favicon.
+
+The `favicon.svg` file is stored in the root directory alongside `index.html`.
+
+The following code is used inside the HTML `<head>`:
+
+```html
+<link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
 ```
 
+The version parameter helps prevent browsers from displaying an older cached favicon.
+
+## Current Development Status
+
+- [x] Initial portfolio structure
+- [x] Dark cosmic visual theme
+- [x] Glassmorphism design elements
+- [x] Interactive 3D profile card
+- [x] Dynamic role rotator
+- [x] Project filtering system
+- [x] Custom SVG favicon
+- [x] Favicon caching issue resolved
+- [ ] Dedicated audio system
+- [ ] Additional interactive visual effects
+
+## Future Plans
+
+Some ideas for future improvements include:
+
+- Advanced liquid-glass effects
+- Dynamic theme and hue customization
+- More expressive animations and transitions
+- Interactive geoinformatics maps
+- Google Earth Engine integrations
+- Hydroponics-related data visualizations
+- A dedicated modular audio system
+
+These features will be explored gradually as the portfolio develops.
+
+## Design Philosophy
+
+The portfolio aims to combine technology, creativity, and personal identity in one place.
+
+The existing dark cosmic aesthetic, glassmorphism elements, and interactive components are intentional parts of the design. Future improvements will build upon this visual identity rather than replacing it entirely.
+
+## Author
+
+**Abhinaba Chatterjee**
+
+B.Sc. (Honours) Agriculture  
+Sister Nivedita University
+
 ---
 
-## 📌 Planned Enhancements (Roadmap)
-* [ ] Integrate Google Earth Engine raster dataset embeds into project showcases.
-* [ ] Add interactive baseline hydroponics telemetry preview modal.
+*Designed and developed with curiosity, creativity, and a passion for technology.*
