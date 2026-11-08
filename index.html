@@ -27,9 +27,8 @@
         <div class="hud-inner"></div>
       </div>
       <div class="preloader-text-container">
-        <span id="casino-text">INITIALIZING WORKSPACE</span>
+        <span id="casino-text">INITIALIZING INFOSPACE</span>
       </div>
-      <div class="preloader-subtext">SYSTEM BOOT IN PROGRESS</div>
     </div>
   </div>
   
@@ -38,10 +37,10 @@
 
   <!-- Fixed Glass Navbar -->
   <header class="navbar-wrapper">
-    <nav class="glass-nav">
+    <nav class="glass-navbar">
       <ul class="nav-pills">
         <li><a href="#hero" class="nav-pill active"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
-        <li><a href="#skills-3d" class="nav-pill"><i class="fa-solid fa-microchip"></i> <span>Skills & Trading Card</span></a></li>
+        <li><a href="#skills-3d" class="nav-pill"><i class="fa-solid fa-microchip"></i> <span>Skills</span></a></li>
         <li><a href="#projects" class="nav-pill"><i class="fa-solid fa-code-fork"></i> <span>Projects</span></a></li>
         <li><a href="#contact" class="nav-pill"><i class="fa-solid fa-paper-plane"></i> <span>Contact</span></a></li>
       </ul>
@@ -50,79 +49,259 @@
 
   <!-- Main Content Layout -->
   <main>
-    
-    <!-- Hero Section -->
     <section id="hero" class="section hero-section">
-      <div class="hero-container">
-        <div class="hero-badge">
-          <i class="fa-solid fa-graduation-cap"></i> Sister Nivedita University
+    <div class="hero-layout">
+
+        <!-- Left: Introduction -->
+        <div class="hero-container hero-copy">
+
+            <div class="hero-badge">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Sister Nivedita University
+            </div>
+
+            <h1 class="hero-title">
+                Hi, I'm Abhinaba Chatterjee<br />
+                <span id="role-rotator" class="highlight-text">
+                    Geoinformatics Specialist
+                </span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Pursuing <strong>B. Sc. (Hons.) in Agriculture</strong>
+                at Sister Nivedita University.
+                Bridging standard web technologies with dynamic
+                geoinformatics, system simulation, smart climate
+                agriculture, and modern baseline hydroponics.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    View Projects
+                </a>
+
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fa-solid fa-envelope"></i>
+                    Get In Touch
+                </a>
+            </div>
+
         </div>
-        <h1 class="hero-title">
-          Hi, I'm Abhinaba Chatterjee<br />
-          <span id="role-rotator" class="highlight-text">Geoinformatics Specialist</span>
-        </h1>
-        <p class="hero-subtitle">
-          Pursuing <strong>B. Sc. (Hons.) in Agriculture</strong> at Sister Nivedita University. 
-          Bridging standard web technologies with dynamic geoinformatics, system simulation, smart climate agriculture, and modern baseline hydroponics.
+
+        <!-- Right: Existing Interactive 3D Profile Card -->
+        <div class="hero-profile">
+
+            <div class="card-3d-wrapper">
+                <div class="card-3d" id="trading-card">
+
+                    <div class="card-glass-glow"></div>
+
+                    <div class="card-header">
+                        <span class="card-tag">Introducing Myself</span>
+                        <i class="fa-solid fa-seedling card-icon"></i>
+                    </div>
+
+                    <div class="card-avatar-container">
+                        <div class="avatar-placeholder">
+                            <i class="fa-solid fa-user-astronaut"></i>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class="card-name">Abhinaba Chatterjee</h3>
+                        <p class="card-subtext">
+                            B. Sc. (Hons.) Ag | Sister Nivedita University
+                        </p>
+
+                        <div class="card-stats">
+
+                            <div class="stat-item">
+                                <span class="stat-label">Web Dev & JS</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 85%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="stat-item">
+                                <span class="stat-label">Geoinformatics</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="stat-item">
+                                <span class="stat-label">Hydroponics</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <i class="fa-solid fa-rotate"></i>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+    
+<section class="journey-section" id="journey">
+    <div class="journey-header">
+        <span class="journey-eyebrow">THE STORY SO FAR</span>
+        <h2>My <span>Journey</span></h2>
+        <p>
+            Every milestone, every curiosity, and every new direction
+            that has shaped who I am.
         </p>
-        
-        <div class="hero-actions">
-          <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-diagram-project"></i> View Projects</a>
-          <a href="#contact" class="btn btn-secondary"><i class="fa-solid fa-envelope"></i> Get In Touch</a>
+    </div>
+
+    <div class="journey-timeline">
+
+        <!-- 2022 -->
+        <div class="journey-year">
+            <div class="journey-year-marker"></div>
+            <div class="journey-year-content">
+                <div class="journey-year-heading">
+                    <span class="journey-year-number">2022</span>
+                    <span class="journey-year-caption">The beginning</span>
+                </div>
+
+                <div class="journey-events">
+                    <article class="journey-card academic">
+                        <span class="journey-category">ACADEMIC</span>
+                        <h3>Class 10 Completed</h3>
+                        <p>St. Mary's School, Malda</p>
+                        <span class="journey-detail">Secondary Education</span>
+                    </article>
+                </div>
+            </div>
         </div>
-      </div>
-    </section>
+
+        <!-- 2024 -->
+        <div class="journey-year">
+            <div class="journey-year-marker"></div>
+            <div class="journey-year-content">
+                <div class="journey-year-heading">
+                    <span class="journey-year-number">2024</span>
+                    <span class="journey-year-caption">A year of new beginnings</span>
+                </div>
+
+                <div class="journey-events">
+                    <article class="journey-card academic">
+                        <span class="journey-category">ACADEMIC</span>
+                        <h3>Class 12 Completed</h3>
+                        <p>Sister Nivedita Public School</p>
+                        <span class="journey-detail">Higher Secondary Education</span>
+                    </article>
+
+                    <article class="journey-card academic">
+                        <span class="journey-category">ACADEMIC</span>
+                        <h3>Joined Sister Nivedita University</h3>
+                        <p>New Town, Kolkata</p>
+                        <span class="journey-detail">
+                            B.Sc. (Honours) in Agriculture
+                        </span>
+                    </article>
+
+                    <article class="journey-card interest">
+                        <span class="journey-category">INTEREST</span>
+                        <h3>Agriculture</h3>
+                        <p>Exploring the science, technology, and future of agriculture.</p>
+                    </article>
+
+                    <article class="journey-card interest">
+                        <span class="journey-category">INTEREST</span>
+                        <h3>Cybersecurity</h3>
+                        <p>Developing an interest in digital security and technology.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2025 -->
+        <div class="journey-year">
+            <div class="journey-year-marker"></div>
+            <div class="journey-year-content">
+                <div class="journey-year-heading">
+                    <span class="journey-year-number">2025</span>
+                    <span class="journey-year-caption">Creative exploration</span>
+                </div>
+
+                <div class="journey-events">
+                    <article class="journey-card interest">
+                        <span class="journey-category">INTEREST</span>
+                        <h3>Art</h3>
+                        <p>Exploring creativity and artistic expression.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2026 -->
+        <div class="journey-year">
+            <div class="journey-year-marker"></div>
+            <div class="journey-year-content">
+                <div class="journey-year-heading">
+                    <span class="journey-year-number">2026</span>
+                    <span class="journey-year-caption">Expanding horizons</span>
+                </div>
+
+                <div class="journey-events">
+                    <article class="journey-card interest">
+                        <span class="journey-category">INTEREST</span>
+                        <h3>Hydroponics</h3>
+                        <p>Exploring soilless cultivation and smart growing systems.</p>
+                    </article>
+
+                    <article class="journey-card interest">
+                        <span class="journey-category">INTEREST</span>
+                        <h3>Geoinformatics</h3>
+                        <p>Exploring spatial data, mapping, and geospatial technologies.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2028 -->
+        <div class="journey-year upcoming">
+            <div class="journey-year-marker"></div>
+            <div class="journey-year-content">
+                <div class="journey-year-heading">
+                    <span class="journey-year-number">2028</span>
+                    <span class="journey-year-caption">Looking ahead</span>
+                </div>
+
+                <div class="journey-events">
+                    <article class="journey-card academic">
+                        <span class="journey-category">EXPECTED</span>
+                        <h3>University Graduation</h3>
+                        <p>Sister Nivedita University</p>
+                        <span class="journey-detail">
+                            B.Sc. (Honours) in Agriculture
+                        </span>
+                    </article>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     <!-- 3D Interactive Card & Skill Matrix Section -->
     <section id="skills-3d" class="section skills-section">
       <div class="section-header">
-        <h2>Interactive Profile & Competencies</h2>
+        <h2>Skills</h2>
       </div>
 
       <div class="skills-grid">
         
-        <!-- Interactive 3D Trading Card Component -->
-        <div class="card-3d-wrapper">
-          <div class="card-3d" id="trading-card">
-            <div class="card-glass-glow"></div>
-            
-            <div class="card-header">
-              <span class="card-tag">Introducing Myself</span>
-              <i class="fa-solid fa-seedling card-icon"></i>
-            </div>
-            
-            <div class="card-avatar-container">
-              <div class="avatar-placeholder">
-                <i class="fa-solid fa-user-astronaut"></i>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <h3 class="card-name">Abhinaba Chatterjee</h3>
-              <p class="card-subtext">B. Sc. (Hons.) Ag | Sister Nivedita University</p>
-
-              <div class="card-stats">
-                <div class="stat-item">
-                  <span class="stat-label">Web Dev & JS</span>
-                  <div class="stat-bar"><div class="stat-fill" style="width: 85%;"></div></div>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-label">Geoinformatics</span>
-                  <div class="stat-bar"><div class="stat-fill" style="width: 80%;"></div></div>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-label">Hydroponics</span>
-                  <div class="stat-bar"><div class="stat-fill" style="width: 75%;"></div></div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="card-footer">
-              <i class="fa-solid fa-rotate"></i>
-            </div>
-          </div>
-        </div>
-
         <!-- Detailed Skill Breakdown Matrix -->
         <div class="skills-matrix">
           
@@ -169,7 +348,7 @@
         <button class="filter-btn" data-filter="geoinformatics">Geoinformatics</button>
         <button class="filter-btn" data-filter="agri">AgriTech</button>
       </div>
-
+      
       <!-- Projects Container Grid -->
       <div class="projects-grid" id="projects-container">
         <!-- Javascript dynamic render populates project cards here -->
@@ -203,7 +382,10 @@
   <script src="js/3d-card.js"></script>
   <script src="js/dynamic-rotator.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/preloader.js"></script>
   <script src="js/sound.js"></script>
+  <script src="js/preloader.js"></script>
+  
+  <script src="js/digital-rain.js"></script>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </body>
 </html>
