@@ -1,977 +1,1979 @@
-/* Glassmorphism Navbar */
-.navbar-wrapper {
-  position: fixed;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-  padding: 0 20px;
+/* Component-level palette: overrides the previous blue/cyan accents. */
+:root {
+    --primary-glow: #39ff9c;
+    --secondary-glow: #16c784;
+    --accent-green: #39ff9c;
+    --glass-border: rgba(130, 255, 190, 0.16);
+    --card-bg: rgba(8, 20, 14, 0.58);
 }
 
-.glass-nav {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
-  border-radius: 50px;
-  padding: 10px 25px;
+/* Glassmorphism Navbar */
+
+.navbar-wrapper {
+
+  position: fixed;
+
+  top: 20px;
+
+  left: 0;
+
+  width: 100%;
+
   display: flex;
+
+  justify-content: center;
+
+  z-index: 1000;
+
+  padding: 0 20px;
+
+}
+
+:is(.glass-nav, .glass-navbar) {
+
+  background: rgba(8, 20, 14, 0.78);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(12px);
+
+  border: 1px solid var(--glass-border);
+
+  border-radius: 50px;
+
+  padding: 10px 25px;
+
+  display: flex;
+
   align-items: center;
+
   gap: 40px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
 }
 
 .nav-logo {
+
   font-family: var(--font-heading);
+
   font-weight: 800;
+
   font-size: 1.25rem;
+
   color: #fff;
+
   text-decoration: none;
+
 }
 
 .nav-logo span {
+
   color: var(--primary-glow);
+
 }
 
 .nav-pills {
+
   list-style: none;
+
   display: flex;
+
   gap: 8px;
+
 }
 
 .nav-pill {
+
   color: var(--text-muted);
+
   text-decoration: none;
+
   padding: 8px 16px;
+
   border-radius: 20px;
+
   font-size: 0.9rem;
+
   font-weight: 500;
+
   display: flex;
+
   align-items: center;
+
   gap: 8px;
+
   transition: var(--transition);
+
 }
 
 .nav-pill:hover, .nav-pill.active {
+
   color: #fff;
-  background: rgba(56, 189, 248, 0.15);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+
+  background: rgba(57, 255, 156, 0.13);
+
+  border: 1px solid rgba(57, 255, 156, 0.28);
+
 }
 
 /* Hero Section Styles */
+
 .hero-container {
+
   max-width: 800px;
+
 }
 
 .hero-badge {
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 8px;
-  background: rgba(52, 211, 153, 0.1);
+
+  background: rgba(57, 255, 156, 0.1);
+
   color: var(--accent-green);
-  border: 1px solid rgba(52, 211, 153, 0.25);
+
+  border: 1px solid rgba(57, 255, 156, 0.25);
+
   padding: 6px 16px;
+
   border-radius: 30px;
+
   font-size: 0.85rem;
+
   font-weight: 600;
+
   margin-bottom: 20px;
+
 }
 
 .hero-title {
+
   font-size: 3.8rem;
+
   line-height: 1.15;
+
   margin-bottom: 25px;
+
   color: #fff;
+
 }
 
 .hero-subtitle {
+
   font-size: 1.15rem;
+
   color: var(--text-muted);
+
   margin-bottom: 35px;
+
   max-width: 650px;
+
 }
 
 .hero-subtitle strong {
+
   color: var(--text-main);
+
 }
 
 .hero-actions {
+
   display: flex;
+
   gap: 15px;
+
 }
 
 /* Buttons */
+
 .btn {
+
   padding: 12px 28px;
+
   border-radius: 30px;
+
   font-weight: 600;
+
   font-size: 0.95rem;
+
   text-decoration: none;
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 10px;
+
   cursor: pointer;
+
   transition: var(--transition);
+
 }
 
 .btn-primary {
+
   background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+
   color: #0b0f19;
-  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+
+  box-shadow: 0 4px 20px rgba(57, 255, 156, 0.28);
+
 }
 
 .btn-primary:hover {
+
   transform: translateY(-2px);
-  box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5);
+
+  box-shadow: 0 6px 25px rgba(57, 255, 156, 0.48);
+
 }
 
 .btn-secondary {
+
   background: rgba(255, 255, 255, 0.05);
+
   color: #fff;
+
   border: 1px solid var(--glass-border);
+
 }
 
 .btn-secondary:hover {
+
   background: rgba(255, 255, 255, 0.1);
+
   border-color: rgba(255, 255, 255, 0.2);
+
 }
 
 /* Skills Layout & Glass Cards */
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 40px;
-  align-items: center;
-}
 
 .skills-matrix {
+
   display: flex;
+
   flex-direction: column;
+
   gap: 20px;
+
 }
 
 .glass-card {
+
   background: var(--card-bg);
+
   backdrop-filter: blur(16px);
+
   -webkit-backdrop-filter: blur(16px);
+
   border: 1px solid var(--glass-border);
+
   border-radius: 20px;
+
   padding: 25px;
+
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
 }
 
 .skills-box h3 {
+
   font-size: 1.2rem;
+
   margin-bottom: 15px;
+
   display: flex;
+
   align-items: center;
+
   gap: 10px;
+
 }
 
 .icon-green { color: var(--accent-green); }
+
 .icon-blue { color: var(--primary-glow); }
 
 .pill-cloud {
+
   display: flex;
+
   flex-wrap: wrap;
+
   gap: 10px;
+
 }
 
 .skill-pill {
-  background: rgba(255, 255, 255, 0.04);
+
+  background: rgba(255, 255, 255, 0.035);
+
   border: 1px solid var(--glass-border);
+
   padding: 8px 14px;
+
   border-radius: 12px;
+
   font-size: 0.88rem;
+
   color: var(--text-main);
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 8px;
+
   transition: var(--transition);
+
 }
 
 .skill-pill i {
+
   color: var(--primary-glow);
+
 }
 
 .skill-pill.learning {
-  border-color: rgba(129, 140, 248, 0.3);
-  background: rgba(129, 140, 248, 0.05);
+
+  border-color: rgba(57, 255, 156, 0.24);
+
+  background: rgba(57, 255, 156, 0.045);
+
 }
 
 .skill-pill.learning i {
+
   color: var(--secondary-glow);
+
 }
 
 .skill-pill:hover {
+
   transform: translateY(-3px);
+
   background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(56, 189, 248, 0.4);
+
+  border-color: rgba(57, 255, 156, 0.38);
+
 }
 
 /* Project Filter Tabs & Grid */
+
 .project-filters {
+
   display: flex;
+
   justify-content: center;
+
   gap: 10px;
+
   margin-bottom: 40px;
+
 }
 
 .filter-btn {
-  background: rgba(255, 255, 255, 0.04);
+
+  background: rgba(255, 255, 255, 0.035);
+
   border: 1px solid var(--glass-border);
+
   color: var(--text-muted);
+
   padding: 8px 20px;
+
   border-radius: 20px;
+
   cursor: pointer;
+
   font-weight: 500;
+
   transition: var(--transition);
+
 }
 
 .filter-btn:hover, .filter-btn.active {
+
   background: var(--primary-glow);
+
   color: #0b0f19;
+
   border-color: var(--primary-glow);
+
   font-weight: 600;
+
 }
 
 .projects-grid {
+
   display: grid;
+
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
   gap: 25px;
+
 }
 
 .project-card {
+
   background: var(--card-bg);
+
   border: 1px solid var(--glass-border);
+
   border-radius: 16px;
+
   overflow: hidden;
+
   transition: var(--transition);
+
   display: flex;
+
   flex-direction: column;
+
 }
 
 .project-card:hover {
+
   transform: translateY(-5px);
-  border-color: rgba(56, 189, 248, 0.4);
+
+  border-color: rgba(57, 255, 156, 0.38);
+
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+
 }
 
 .project-content {
+
   padding: 25px;
+
   display: flex;
+
   flex-direction: column;
+
   flex-grow: 1;
+
 }
 
 .project-tags {
+
   display: flex;
+
   gap: 8px;
+
   margin-bottom: 12px;
+
 }
 
 .project-tag {
+
   font-size: 0.75rem;
-  background: rgba(56, 189, 248, 0.1);
+
+  background: rgba(57, 255, 156, 0.1);
+
   color: var(--primary-glow);
+
   padding: 3px 10px;
+
   border-radius: 6px;
+
   font-weight: 600;
+
 }
 
 .project-card h3 {
+
   font-size: 1.35rem;
+
   margin-bottom: 10px;
+
   color: #fff;
+
 }
 
 .project-card p {
+
   color: var(--text-muted);
+
   font-size: 0.92rem;
+
   margin-bottom: 20px;
+
   flex-grow: 1;
+
 }
 
 .project-links {
+
   display: flex;
+
   gap: 15px;
+
 }
 
 .project-link {
+
   font-size: 0.88rem;
+
   color: var(--text-main);
+
   text-decoration: none;
+
   display: inline-flex;
+
   align-items: center;
+
   gap: 6px;
+
   font-weight: 600;
+
   transition: var(--transition);
+
 }
 
 .project-link:hover {
+
   color: var(--primary-glow);
+
 }
 
 /* Contact Section */
+
 .contact-section {
+
   min-height: 60vh;
+
   align-items: center;
+
 }
 
 .contact-card {
+
   text-align: center;
+
   max-width: 650px;
+
   width: 100%;
+
   padding: 50px;
+
 }
 
 .contact-card h2 {
+
   font-size: 2.2rem;
+
   margin-bottom: 15px;
+
 }
 
 .contact-card p {
+
   color: var(--text-muted);
+
   margin-bottom: 30px;
+
 }
 
 footer {
+
   text-align: center;
+
   padding: 30px;
+
   color: var(--text-muted);
+
   font-size: 0.85rem;
+
   border-top: 1px solid var(--glass-border);
+
 }
 
 /* Responsive queries */
+
 @media (max-width: 900px) {
+
   .skills-grid {
+
     grid-template-columns: 1fr;
+
   }
+
   .hero-title {
+
     font-size: 2.8rem;
+
   }
-  .glass-nav {
+
+  :is(.glass-nav, .glass-navbar) {
+
     gap: 15px;
+
     padding: 10px 18px;
+
   }
+
   .nav-pill span {
+
     display: none;
+
   }
+
 }
 
-/* Casino / Decrypting Text Preloader */
+/* =========================================================
+   INFOSPACE — CLEAN CYBER-GREEN PRELOADER
+   Keeps the existing #preloader / .warp-out / .fade-out hooks.
+   ========================================================= */
+
 #preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #05070c;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+    --preloader-bg: #030806;
+    --preloader-green: #39ff9c;
+
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 50% 48%, rgba(16, 105, 61, 0.22), transparent 58%),
+        linear-gradient(180deg, #030806 0%, #06140d 55%, #020604 100%);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+        opacity 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 1.05s ease,
+        filter 1.05s ease;
+    will-change: opacity;
+}
+
+/* Legacy highway markup remains harmless if it is still in index.html. */
+#preloader .highway-scene,
+#preloader .highway-horizon,
+#preloader .highway-road,
+#preloader .highway-lights {
+    display: none !important;
+}
+
+#preloader::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(57, 255, 156, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57, 255, 156, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, transparent 76%);
+    mask-image: radial-gradient(ellipse at center, #000 0%, transparent 76%);
+    pointer-events: none;
+}
+
+#preloader::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: min(62vw, 620px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(0, 255, 128, 0.075);
+    filter: blur(90px);
+    pointer-events: none;
+    animation: preloaderAmbient 6s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderAmbient {
+    from { transform: scale(0.88); opacity: 0.38; }
+    to   { transform: scale(1.1); opacity: 0.72; }
+}
+
+#preloader .preloader-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: min(90%, 650px);
+    min-height: 160px;
+    padding: 42px 30px;
+    text-align: center;
+    border: 1px solid rgba(57, 255, 156, 0.17);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.008));
+    box-shadow:
+        0 0 42px rgba(0, 255, 128, 0.055),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    animation: preloaderContentIn 900ms ease both;
+    transition: transform 850ms cubic-bezier(0.22, 1, 0.36, 1), filter 850ms ease;
+}
+
+@keyframes preloaderContentIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+#preloader .preloader-text-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 42px;
+    padding-bottom: 22px;
+    font-family: "Outfit", "Consolas", monospace;
+    font-size: clamp(0.9rem, 2.3vw, 1.35rem);
+    font-weight: 700;
+    letter-spacing: clamp(2px, 0.55vw, 5px);
+    line-height: 1.6;
+    text-align: center;
+}
+
+#preloader .preloader-text-container::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 62px;
+    height: 2px;
+    border-radius: 99px;
+    background: var(--preloader-green);
+    box-shadow: 0 0 9px rgba(57, 255, 156, 0.8), 0 0 20px rgba(57, 255, 156, 0.35);
+    transform: translateX(-50%);
+    animation: preloaderIndicator 1.8s ease-in-out infinite;
+}
+
+#preloader #casino-text {
+    display: inline-block;
+    color: #d9ffea;
+    text-shadow: 0 0 8px rgba(57, 255, 156, 0.5), 0 0 22px rgba(57, 255, 156, 0.2);
+    overflow-wrap: anywhere;
+    animation: preloaderTextGlow 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes preloaderIndicator {
+    0%, 100% { opacity: 0.35; transform: translateX(-50%) scaleX(0.68); }
+    50%      { opacity: 1; transform: translateX(-50%) scaleX(1); }
+}
+
+@keyframes preloaderTextGlow {
+    from { text-shadow: 0 0 6px rgba(57, 255, 156, 0.35), 0 0 14px rgba(57, 255, 156, 0.12); }
+    to   { text-shadow: 0 0 10px rgba(57, 255, 156, 0.72), 0 0 25px rgba(57, 255, 156, 0.3); }
+}
+
+/* The existing JS adds warp-out before fade-out; keep the content visible. */
+#preloader.warp-out .preloader-content {
+    transform: scale(1.025);
+    filter: brightness(1.12);
+}
+
+#preloader.warp-out #casino-text {
+    text-shadow: 0 0 12px rgba(57, 255, 156, 0.85), 0 0 28px rgba(57, 255, 156, 0.45);
 }
 
 #preloader.fade-out {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.preloader-content {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-}
-
-.preloader-hud-ring {
-  width: 70px;
-  height: 70px;
-  border: 2px dashed rgba(56, 189, 248, 0.3);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: hudSpin 3s linear infinite;
-}
-
-.hud-inner {
-  width: 45px;
-  height: 45px;
-  border: 2px solid var(--primary-glow);
-  border-top-color: transparent;
-  border-radius: 50%;
-  animation: hudSpinReverse 1.5s ease-in-out infinite;
-}
-
-.preloader-text-container {
-  font-family: 'Outfit', monospace;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: 4px;
-  min-height: 40px;
-  background: linear-gradient(135deg, var(--primary-glow), #a855f7);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-}
-
-@keyframes hudSpin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes hudSpinReverse {
-  to { transform: rotate(-360deg); }
-}
-
-
-/* =========================================
-   EDUCATION & INTERESTS TIMELINE
-========================================= */
-
-.timeline-section {
-  position: relative;
-  width: min(100% - 40px, 900px);
-  margin: 100px auto;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 55px;
-}
-
-.section-kicker {
-  display: inline-block;
-  color: #9b8cff;
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
-}
-
-.section-heading h2 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin: 0;
-}
-
-.section-heading h2 span {
-  color: #9b8cff;
-}
-
-.section-heading p {
-  opacity: 0.65;
-  margin-top: 12px;
-}
-
-.timeline {
-  position: relative;
-  padding-left: 35px;
-}
-
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 9px;
-  top: 5px;
-  bottom: 5px;
-  width: 2px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    #8b7cff,
-    #53d6ff,
-    transparent
-  );
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 30px;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: -33px;
-  top: 24px;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: #a18aff;
-  box-shadow: 0 0 15px #a18aff;
-  z-index: 2;
-}
-
-.timeline-card {
-  padding: 25px;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 18px;
-  background: rgba(255,255,255,0.045);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  transition: transform 0.35s ease, border-color 0.35s ease;
-}
-
-.timeline-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(155,140,255,0.6);
-}
-
-.timeline-year {
-  display: inline-block;
-  color: #a99aff;
-  font-size: 0.85rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.timeline-card h3 {
-  font-size: 1.3rem;
-  margin: 0 0 7px;
-}
-
-.timeline-card h4 {
-  font-size: 0.95rem;
-  font-weight: 500;
-  opacity: 0.8;
-  margin: 0 0 12px;
-}
-
-.timeline-card p {
-  line-height: 1.7;
-  opacity: 0.7;
-  margin: 0;
-}
-
-.timeline-status {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.72rem;
-  background: rgba(120,220,170,0.12);
-  color: #83e8b5;
-}
-
-.timeline-status.ongoing {
-  background: rgba(100,180,255,0.12);
-  color: #80c8ff;
-}
-
-@media (max-width: 600px) {
-  .timeline-section {
-    width: calc(100% - 30px);
-    margin: 70px auto;
-  }
-
-  .timeline-card {
-    padding: 19px;
-  }
-
-  .timeline-card h3 {
-    font-size: 1.1rem;
-  }
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    filter: blur(5px);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .timeline-card {
-    transition: none;
-  }
+    #preloader::after,
+    #preloader .preloader-content,
+    #preloader #casino-text,
+    #preloader .preloader-text-container::after {
+        animation: none !important;
+    }
 
-  .timeline-card:hover {
-    transform: none;
-  }
-}
-
-
-/* =========================================
-   DIGITAL RAIN CANVAS
-   ========================================= */
-
-html,
-body {
-    isolation: isolate;
-}
-
-#digital-rain {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-
-    z-index: -1;
-    pointer-events: none;
-
-    opacity: 0.72;
-    mix-blend-mode: screen;
-
-    display: block;
-}
-
-/* Keep the effect subtle on smaller screens. */
-@media (max-width: 768px) {
-    #digital-rain {
-        opacity: 0.48;
+    #preloader .preloader-content {
+        transition-duration: 0.01ms;
     }
 }
 
+@media (max-width: 600px) {
+    #preloader .preloader-content {
+        width: 88%;
+        min-height: 140px;
+        padding: 32px 18px;
+        border-radius: 16px;
+    }
 
-/* =================================
-   MY JOURNEY — UNIFIED TIMELINE
-================================= */
+    #preloader .preloader-text-container {
+        letter-spacing: 2px;
+    }
+
+    #preloader::before { background-size: 36px 36px; }
+}
+
+/* =========================================
+
+   DIGITAL RAIN CANVAS
+
+   ========================================= */
+
+html,
+
+body {
+
+    isolation: isolate;
+
+}
+
+#digital-rain {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: -1;
+
+    pointer-events: none;
+
+    opacity: 0.92;
+
+    mix-blend-mode: screen;
+
+    display: block;
+
+}
+
+/* Keep the effect subtle on smaller screens. */
+
+@media (max-width: 768px) {
+
+    #digital-rain {
+
+        opacity: 0.84;
+
+    }
+
+}
+
+/* =========================================================
+   MY JOURNEY — COMPACT HORIZONTAL UNIFIED TIMELINE
+   Keeps the existing .journey-* HTML class names.
+   ========================================================= */
 
 .journey-section {
     position: relative;
-    width: 100%;
-    max-width: 1100px;
+    width: min(100%, 1200px);
     margin: 0 auto;
-    padding: 110px 24px;
+    padding: 82px 24px;
 }
 
 .journey-header {
-    text-align: center;
     max-width: 650px;
-    margin: 0 auto 75px;
+    margin: 0 auto 42px;
+    text-align: center;
 }
 
 .journey-eyebrow {
     display: inline-block;
-    color: #70cfff;
+    margin-bottom: 12px;
+    color: var(--primary-glow);
     font-size: 0.75rem;
     font-weight: 700;
     letter-spacing: 3px;
-    margin-bottom: 16px;
 }
 
 .journey-header h2 {
-    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
     font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 16px;
 }
 
 .journey-header h2 span {
-    color: #70cfff;
-    text-shadow: 0 0 25px rgba(112, 207, 255, 0.3);
+    color: var(--primary-glow);
+    text-shadow: 0 0 22px rgba(57, 255, 156, 0.25);
 }
 
 .journey-header p {
-    color: rgba(220, 235, 255, 0.65);
-    font-size: 1rem;
-    line-height: 1.7;
+    color: rgba(220, 255, 235, 0.66);
+    font-size: 0.95rem;
+    line-height: 1.65;
 }
-
-/* Timeline structure */
 
 .journey-timeline {
     position: relative;
-    max-width: 850px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    max-width: 100%;
     margin: 0 auto;
+    padding: 18px 4px 24px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(57, 255, 156, 0.42) rgba(255, 255, 255, 0.05);
+}
+
+.journey-timeline::-webkit-scrollbar { height: 6px; }
+.journey-timeline::-webkit-scrollbar-track {
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.045);
+}
+.journey-timeline::-webkit-scrollbar-thumb {
+    border-radius: 99px;
+    background: rgba(57, 255, 156, 0.42);
 }
 
 .journey-timeline::before {
     content: "";
     position: absolute;
-    left: 7px;
-    top: 12px;
-    bottom: 35px;
-    width: 2px;
-    background: linear-gradient(
-        to bottom,
-        rgba(112, 207, 255, 0.8),
-        rgba(112, 207, 255, 0.12)
-    );
+    top: 25px;
+    left: 14px;
+    right: 14px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(57, 255, 156, 0.12), rgba(57, 255, 156, 0.72), rgba(57, 255, 156, 0.12));
+    pointer-events: none;
 }
 
 .journey-year {
     position: relative;
-    display: grid;
-    grid-template-columns: 16px 1fr;
-    gap: 28px;
-    margin-bottom: 55px;
+    z-index: 1;
+    display: flex;
+    flex: 0 0 clamp(230px, 27vw, 285px);
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+    scroll-snap-align: start;
 }
 
-.journey-year:last-child {
-    margin-bottom: 0;
-}
+.journey-year:last-child { margin-right: 4px; }
 
 .journey-year-marker {
     position: relative;
-    z-index: 1;
-    width: 16px;
-    height: 16px;
-    margin-top: 8px;
+    z-index: 2;
+    width: 15px;
+    height: 15px;
+    margin: 0 0 0 7px;
+    border: 3px solid #07140d;
     border-radius: 50%;
-    background: #70cfff;
-    border: 3px solid #101b32;
-    box-shadow: 0 0 15px rgba(112, 207, 255, 0.7);
+    background: var(--primary-glow);
+    box-shadow: 0 0 0 3px rgba(57, 255, 156, 0.12), 0 0 14px rgba(57, 255, 156, 0.55);
 }
 
-.journey-year-content {
-    min-width: 0;
-}
+.journey-year-content { min-width: 0; }
 
 .journey-year-heading {
     display: flex;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 22px;
+    gap: 9px;
+    min-height: 34px;
+    margin-bottom: 12px;
 }
 
 .journey-year-number {
-    font-size: 2rem;
+    color: #fff;
+    font-size: 1.55rem;
     font-weight: 800;
-    color: #ffffff;
-    letter-spacing: -1px;
+    letter-spacing: -0.7px;
 }
 
 .journey-year-caption {
-    color: rgba(180, 215, 245, 0.55);
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
+    color: rgba(180, 235, 205, 0.58);
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
 }
 
 .journey-events {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
+    grid-template-columns: 1fr;
+    gap: 10px;
 }
-
-/* Event cards */
 
 .journey-card {
     position: relative;
     min-width: 0;
-    padding: 23px;
-    border-radius: 17px;
-
-    background: rgba(255, 255, 255, 0.035);
-    border: 1px solid rgba(160, 210, 255, 0.12);
-
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+    padding: 17px;
+    border: 1px solid rgba(130, 255, 190, 0.14);
+    border-radius: 15px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045), 0 8px 24px rgba(0, 0, 0, 0.16);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
 }
 
 .journey-card:hover {
-    transform: translateY(-5px);
-    background: rgba(112, 207, 255, 0.065);
-    border-color: rgba(112, 207, 255, 0.4);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    border-color: rgba(57, 255, 156, 0.38);
+    background: rgba(57, 255, 156, 0.055);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.2);
 }
 
 .journey-category {
     display: inline-block;
-    margin-bottom: 13px;
-    font-size: 0.65rem;
+    margin-bottom: 9px;
+    color: var(--primary-glow);
+    font-size: 0.62rem;
     font-weight: 800;
-    letter-spacing: 1.8px;
-    color: #70cfff;
+    letter-spacing: 1.5px;
 }
 
-.journey-card.interest .journey-category {
-    color: #a9baff;
-}
+.journey-card.interest .journey-category { color: #a7f3c7; }
 
 .journey-card h3 {
-    color: #ffffff;
-    font-size: 1.08rem;
+    margin: 0 0 7px;
+    color: #fff;
+    font-size: 0.98rem;
     line-height: 1.4;
-    margin: 0 0 9px;
 }
 
 .journey-card p {
-    color: rgba(220, 235, 255, 0.68);
-    font-size: 0.88rem;
-    line-height: 1.65;
     margin: 0;
+    color: rgba(220, 255, 235, 0.68);
+    font-size: 0.82rem;
+    line-height: 1.55;
 }
 
 .journey-detail {
     display: inline-block;
-    margin-top: 12px;
-    color: rgba(112, 207, 255, 0.8);
-    font-size: 0.76rem;
+    margin-top: 9px;
+    color: rgba(120, 255, 180, 0.78);
+    font-size: 0.72rem;
 }
 
-/* Future milestone */
-
 .journey-year.upcoming .journey-year-marker {
-    background: #101b32;
-    border: 2px solid #70cfff;
-    box-shadow: 0 0 12px rgba(112, 207, 255, 0.35);
+    border: 2px solid var(--primary-glow);
+    background: #07140d;
+    box-shadow: 0 0 12px rgba(57, 255, 156, 0.3);
 }
 
 .journey-year.upcoming .journey-card {
     border-style: dashed;
-    border-color: rgba(112, 207, 255, 0.3);
+    border-color: rgba(57, 255, 156, 0.28);
 }
 
-/* Responsive layout */
-
-@media (max-width: 650px) {
-    .journey-section {
-        padding: 75px 18px;
-    }
-
-    .journey-header {
-        margin-bottom: 55px;
-    }
-
-    .journey-year {
-        gap: 19px;
-        margin-bottom: 42px;
-    }
-
-    .journey-year-number {
-        font-size: 1.7rem;
-    }
-
-    .journey-events {
-        grid-template-columns: 1fr;
-    }
-
-    .journey-card {
-        padding: 19px;
-    }
+@media (max-width: 700px) {
+    .journey-section { padding: 64px 16px; }
+    .journey-header { margin-bottom: 28px; }
+    .journey-timeline { gap: 13px; }
+    .journey-year { flex-basis: min(78vw, 265px); }
+    .journey-year-number { font-size: 1.4rem; }
+    .journey-card { padding: 15px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .journey-card {
-        transition: none;
-    }
-
-    .journey-card:hover {
-        transform: none;
-    }
+    .journey-card { transition: none; }
+    .journey-card:hover { transform: none; }
 }
 
-
 /* =================================
+
    HERO SECTION — TWO COLUMN LAYOUT
-================================= */
+
+\================================= */
 
 .hero-section {
+
     min-height: 100vh;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
 }
 
 .hero-layout {
+
     width: 100%;
+
     max-width: 1250px;
+
     margin: 0 auto;
+
     padding: 100px 35px 60px;
 
     display: grid;
+
     grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+
     align-items: center;
+
     gap: 55px;
+
 }
 
 .hero-copy {
+
     width: 100%;
+
     max-width: 100%;
+
     margin: 0;
+
     text-align: left;
+
 }
 
 .hero-copy .hero-title {
+
     text-align: left;
+
 }
 
 .hero-copy .hero-subtitle {
+
     max-width: 650px;
+
 }
 
 .hero-profile {
+
     width: 100%;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     perspective: 1200px;
+
 }
 
 .hero-profile .card-3d-wrapper {
+
     width: 100%;
+
     max-width: 350px;
+
     margin: 0 auto;
+
 }
 
 /* Keep existing 3D card effects intact */
 
 .hero-profile .card-3d {
+
     width: 100%;
+
 }
 
 /* Skills section no longer needs the card column */
 
 .skills-grid {
+
     display: block;
+
 }
 
 .skills-matrix {
+
     width: 100%;
+
 }
 
 /* Responsive */
 
 @media (max-width: 900px) {
+
     .hero-layout {
+
         grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+
         gap: 30px;
+
         padding-left: 25px;
+
         padding-right: 25px;
+
     }
 
     .hero-profile .card-3d-wrapper {
+
         max-width: 300px;
+
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .hero-section {
+
+        min-height: auto;
+
+    }
+
+    .hero-layout {
+
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+
+        padding: 130px 22px 70px;
+
+    }
+
+    .hero-copy {
+
+        text-align: center;
+
+    }
+
+    .hero-copy .hero-title {
+
+        text-align: center;
+
+    }
+
+    .hero-copy .hero-subtitle {
+
+        margin-left: auto;
+
+        margin-right: auto;
+
+    }
+
+    .hero-copy .hero-actions {
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+    }
+
+    .hero-profile .card-3d-wrapper {
+
+        max-width: 320px;
+
+    }
+
+}
+
+/* =========================================================
+   INFOSPACE — CYBER GREEN + CYAN LIQUID GLASS REFINEMENT
+   Main-site overrides only. The preloader block above is unchanged.
+   ========================================================= */
+
+:root {
+    --primary-glow: #39f5a4;
+    --secondary-glow: #35cfff;
+    --accent-green: #39f5a4;
+    --glass-border: rgba(225, 248, 255, 0.22);
+    --card-bg: rgba(12, 20, 29, 0.28);
+    --liquid-glass-fill: rgba(235, 248, 255, 0.075);
+    --liquid-glass-edge: rgba(235, 249, 255, 0.28);
+}
+
+/* Keep the page dark while blending cyber-green and cyan-blue light. */
+body.dark-theme {
+    background-color: #030b12;
+    background-image:
+        radial-gradient(ellipse at 12% 18%, rgba(28, 235, 145, 0.19), transparent 38%),
+        radial-gradient(ellipse at 88% 24%, rgba(32, 180, 255, 0.19), transparent 42%),
+        radial-gradient(ellipse at 52% 88%, rgba(12, 105, 100, 0.13), transparent 48%),
+        linear-gradient(135deg, #030b12 0%, #06151a 48%, #061020 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Neutral, light-catching Liquid Glass — no green/blue tinted card fills. */
+.glass-card,
+.project-card,
+.journey-card,
+.timeline-card,
+.contact-card {
+    position: relative;
+    isolation: isolate;
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.115) 0%,
+            rgba(255, 255, 255, 0.045) 42%,
+            rgba(255, 255, 255, 0.025) 100%);
+    border: 1px solid var(--liquid-glass-edge);
+    box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.30),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.055);
+    -webkit-backdrop-filter: blur(24px) saturate(165%);
+    backdrop-filter: blur(24px) saturate(165%);
+}
+
+.glass-card::before,
+.project-card::before,
+.journey-card::before,
+.timeline-card::before,
+.contact-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(125deg,
+        rgba(255, 255, 255, 0.14),
+        transparent 32%,
+        transparent 70%,
+        rgba(255, 255, 255, 0.035));
+    pointer-events: none;
+}
+
+.glass-card:hover,
+.project-card:hover,
+.journey-card:hover,
+.timeline-card:hover {
+    border-color: rgba(230, 250, 255, 0.42);
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.065) 48%,
+            rgba(255, 255, 255, 0.035) 100%);
+    box-shadow:
+        0 22px 55px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.36),
+        0 0 24px rgba(65, 211, 205, 0.07);
+}
+
+/* Accent color belongs to details and controls, not the glass material. */
+.nav-pill:hover,
+.nav-pill.active {
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(225, 248, 255, 0.24);
+}
+
+.hero-badge,
+.project-tag {
+    background: rgba(255, 255, 255, 0.065);
+    border-color: rgba(225, 248, 255, 0.2);
+}
+
+.skill-pill,
+.skill-pill.learning {
+    background: rgba(255, 255, 255, 0.055);
+    border-color: rgba(225, 248, 255, 0.17);
+}
+
+.skill-pill:hover {
+    background: rgba(255, 255, 255, 0.11);
+    border-color: rgba(225, 248, 255, 0.32);
+}
+
+/* Skills Learned + Currently Learning: two aligned columns on wide screens. */
+.skills-grid {
+    display: block;
+    width: 100%;
+}
+
+.skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 22px;
+    width: 100%;
+}
+
+.skills-matrix > .skills-box {
+    min-width: 0;
+    height: 100%;
+}
+
+.skills-box h3 {
+    min-height: 1.5em;
+}
+
+/* My Journey: one centered vertical timeline, with the existing journey classes. */
+.journey-section {
+    width: min(100%, 1040px);
+    margin-inline: auto;
+}
+
+.journey-header {
+    text-align: center;
+    margin-inline: auto;
+}
+
+.journey-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: min(100%, 820px);
+    margin-inline: auto;
+    padding: 12px 0 18px;
+    overflow: visible;
+    scroll-snap-type: none;
+}
+
+.journey-timeline::before {
+    top: 12px;
+    bottom: 18px;
+    left: 50%;
+    right: auto;
+    width: 2px;
+    height: auto;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg,
+        rgba(57, 245, 164, 0.16),
+        rgba(53, 207, 255, 0.78) 48%,
+        rgba(57, 245, 164, 0.16));
+}
+
+.journey-year {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr);
+    align-items: start;
+    gap: 12px;
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 760px;
+    scroll-snap-align: none;
+}
+
+.journey-year-marker {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    margin: 5px 0 0;
+    border-color: #07131a;
+    background: linear-gradient(135deg, var(--primary-glow), var(--secondary-glow));
+    box-shadow:
+        0 0 0 4px rgba(225, 248, 255, 0.075),
+        0 0 18px rgba(53, 207, 255, 0.42);
+}
+
+.journey-year-content {
+    grid-column: 3;
+    grid-row: 1;
+    min-width: 0;
+    width: 100%;
+    text-align: left;
+}
+
+.journey-year:nth-child(even) .journey-year-content {
+    grid-column: 1;
+    text-align: right;
+}
+
+.journey-year:nth-child(even) .journey-year-heading {
+    justify-content: flex-end;
+}
+
+.journey-year-heading {
+    min-height: 0;
+    margin-bottom: 10px;
+}
+
+.journey-year-number {
+    background: linear-gradient(100deg, var(--primary-glow), var(--secondary-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.journey-card {
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.105),
+            rgba(255, 255, 255, 0.035));
+}
+
+.journey-card:hover {
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.15),
+            rgba(255, 255, 255, 0.055));
+}
+
+.journey-category,
+.journey-detail {
+    color: var(--secondary-glow);
+}
+
+.journey-card.interest .journey-category {
+    color: var(--primary-glow);
+}
+
+/* Legacy timeline class support, in case the current My Journey markup uses it. */
+.timeline-section .timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    width: min(100%, 820px);
+    margin: 0 auto;
+    padding: 10px 0 18px;
+}
+
+.timeline-section .timeline::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 18px;
+    left: 50%;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg,
+        rgba(57, 245, 164, 0.16),
+        rgba(53, 207, 255, 0.75),
+        rgba(57, 245, 164, 0.16));
+}
+
+.timeline-section .timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+    align-items: start;
+    width: 100%;
+    max-width: 760px;
+    margin: 0;
+}
+
+.timeline-section .timeline-marker {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    z-index: 1;
+}
+
+.timeline-section .timeline-card {
+    grid-column: 3;
+    grid-row: 1;
+    width: 100%;
+}
+
+.timeline-section .timeline-item:nth-child(even) .timeline-card {
+    grid-column: 1;
+    text-align: right;
+}
+
+/* Responsive: retain both skill panels side by side until narrow phones. */
+@media (max-width: 700px) {
+    .skills-matrix {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .journey-section {
+        padding: 64px 18px;
+    }
+
+    .journey-timeline {
+        width: 100%;
+        gap: 20px;
+    }
+
+    .journey-year {
+        grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .journey-year-number {
+        font-size: 1.25rem;
+    }
+
+    .journey-card {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-section .timeline-item {
+        grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr);
+        gap: 6px;
+    }
+
+    .timeline-section .timeline-card {
+        padding: 12px;
+    }
+}
+
+
+/* =========================================================
+   INFOSPACE — TRUE TRANSPARENT LIQUID GLASS + FLOATING RECTANGULAR UI
+   Overrides the earlier tinted glass and pill navigation styles.
+   Existing markup, animations, preloader hooks and responsive rules remain.
+   ========================================================= */
+
+:root {
+    --glass-border: rgba(235, 249, 255, 0.24);
+    --card-bg: rgba(255, 255, 255, 0.008);
+    --liquid-glass-fill: rgba(255, 255, 255, 0.012);
+    --liquid-glass-edge: rgba(235, 249, 255, 0.27);
+}
+
+/* One unified, detached rectangular navigation panel. */
+.navbar-wrapper {
+    position: fixed;
+    top: 22px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 0 22px;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+:is(.glass-nav, .glass-navbar) {
+    pointer-events: auto;
+    width: max-content;
+    max-width: min(1100px, 100%);
+    min-height: 66px;
+    padding: 11px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(16px, 3vw, 38px);
+    border: 1px solid rgba(235, 249, 255, 0.30);
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.012);
+    -webkit-backdrop-filter: blur(12px) saturate(155%);
+    backdrop-filter: blur(12px) saturate(155%);
+    box-shadow:
+        0 14px 42px rgba(0, 0, 0, 0.17),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.07);
+    position: relative;
+    isolation: isolate;
+}
+
+:is(.glass-nav, .glass-navbar)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: linear-gradient(118deg,
+        rgba(255, 255, 255, 0.10) 0%,
+        rgba(255, 255, 255, 0.018) 25%,
+        transparent 58%,
+        rgba(255, 255, 255, 0.045) 100%);
+    pointer-events: none;
+}
+
+.nav-pills {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-pill {
+    min-height: 40px;
+    padding: 9px 13px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    transition: color 220ms ease, background 220ms ease, border-color 220ms ease, transform 220ms ease;
+}
+
+.nav-pill:hover,
+.nav-pill.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.075);
+    border-color: rgba(235, 249, 255, 0.22);
+    transform: translateY(-1px);
+}
+
+/* Clear glass: very low surface opacity; blur is restrained so the scene remains legible. */
+.glass-card,
+.project-card,
+.journey-card,
+.timeline-card,
+.contact-card {
+    background: rgba(255, 255, 255, 0.009);
+    border: 1px solid rgba(235, 249, 255, 0.25);
+    -webkit-backdrop-filter: blur(9px) saturate(145%);
+    backdrop-filter: blur(9px) saturate(145%);
+    box-shadow:
+        0 16px 42px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.glass-card::before,
+.project-card::before,
+.journey-card::before,
+.timeline-card::before,
+.contact-card::before {
+    background: linear-gradient(132deg,
+        rgba(255, 255, 255, 0.095) 0%,
+        transparent 27%,
+        transparent 76%,
+        rgba(255, 255, 255, 0.025) 100%);
+}
+
+.glass-card:hover,
+.project-card:hover,
+.journey-card:hover,
+.timeline-card:hover {
+    background: rgba(255, 255, 255, 0.022);
+    border-color: rgba(235, 249, 255, 0.39);
+    box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.21),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
+        0 0 22px rgba(53, 207, 255, 0.045);
+}
+
+/* Keep the learned/currently-learning panels side by side on desktop and tablet. */
+.skills-grid {
+    display: block;
+    width: 100%;
+}
+
+.skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 22px;
+    width: 100%;
+}
+
+.skills-matrix > .skills-box {
+    min-width: 0;
+    height: 100%;
+}
+
+/* Footer is a separate floating rectangular glass panel, not a full-width strip. */
+footer {
+    width: min(calc(100% - 44px), 1100px);
+    margin: 34px auto 24px;
+    padding: 25px clamp(18px, 4vw, 42px);
+    text-align: center;
+    border: 1px solid rgba(235, 249, 255, 0.24);
+    border-top: 1px solid rgba(235, 249, 255, 0.30);
+    border-radius: 17px;
+    background: rgba(255, 255, 255, 0.010);
+    -webkit-backdrop-filter: blur(10px) saturate(145%);
+    backdrop-filter: blur(10px) saturate(145%);
+    box-shadow:
+        0 14px 38px rgba(0, 0, 0, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.045);
+}
+
+@media (max-width: 900px) {
+    :is(.glass-nav, .glass-navbar) {
+        gap: 14px;
+        padding: 10px 15px;
+    }
+    .nav-pill {
+        padding: 8px 10px;
     }
 }
 
 @media (max-width: 700px) {
-    .hero-section {
-        min-height: auto;
+    .navbar-wrapper {
+        top: 12px;
+        padding: 0 12px;
     }
-
-    .hero-layout {
-        grid-template-columns: 1fr;
-        gap: 45px;
-        padding: 130px 22px 70px;
+    :is(.glass-nav, .glass-navbar) {
+        width: 100%;
+        max-width: 560px;
+        min-height: 58px;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 14px;
     }
-
-    .hero-copy {
-        text-align: center;
-    }
-
-    .hero-copy .hero-title {
-        text-align: center;
-    }
-
-    .hero-copy .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .hero-copy .hero-actions {
+    .nav-pills {
         justify-content: center;
-        flex-wrap: wrap;
+        gap: 2px;
     }
+    .nav-pill {
+        min-height: 36px;
+        padding: 7px 8px;
+        border-radius: 7px;
+    }
+    .skills-matrix {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    footer {
+        width: calc(100% - 28px);
+        margin: 26px auto 16px;
+        padding: 22px 16px;
+        border-radius: 14px;
+    }
+}
 
-    .hero-profile .card-3d-wrapper {
-        max-width: 320px;
+@media (max-width: 420px) {
+    :is(.glass-nav, .glass-navbar) {
+        gap: 4px;
+        padding: 7px;
+    }
+    .nav-pill {
+        padding: 7px 6px;
+        font-size: 0.78rem;
+    }
+}
+
+
+/* =========================================================
+   FINAL POLISH — RECTANGULAR NAV ENCLOSURE + THREE-RAY REVEAL
+   The navbar alias matches the actual <nav class="glass-navbar"> markup.
+   The reveal is triggered by the existing #preloader.warp-out hook.
+   ========================================================= */
+
+/* Ensure the four navigation links sit inside one detached glass panel. */
+.navbar-wrapper {
+    pointer-events: none;
+}
+
+:is(.glass-nav, .glass-navbar) {
+    pointer-events: auto;
+    width: max-content;
+    max-width: min(1100px, 100%);
+    min-height: 66px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(225, 250, 255, 0.34);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.018);
+    -webkit-backdrop-filter: blur(10px) saturate(165%);
+    backdrop-filter: blur(10px) saturate(165%);
+    box-shadow: 0 16px 42px rgba(0,0,0,.20),
+                inset 0 1px 0 rgba(255,255,255,.36),
+                inset 0 -1px 0 rgba(255,255,255,.08);
+    position: relative;
+    isolation: isolate;
+}
+
+:is(.glass-nav, .glass-navbar) .nav-pills {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+}
+
+:is(.glass-nav, .glass-navbar) .nav-pill {
+    border: 1px solid transparent;
+    border-radius: 9px;
+    white-space: nowrap;
+}
+
+:is(.glass-nav, .glass-navbar) .nav-pill:hover,
+:is(.glass-nav, .glass-navbar) .nav-pill.active {
+    background: rgba(255,255,255,.075);
+    border-color: rgba(225,250,255,.20);
+}
+
+/* Three light fractures emerge from the centre as the loading panel opens. */
+#preloader .preloader-content {
+    overflow: visible;
+    transform-origin: center;
+}
+
+#preloader .preloader-content::before,
+#preloader .preloader-content::after,
+#preloader .preloader-text-container::before {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    left: 50%;
+    top: 50%;
+    width: clamp(110px, 22vw, 260px);
+    height: 2px;
+    border-radius: 99px;
+    opacity: 0;
+    pointer-events: none;
+    transform-origin: left center;
+    background: linear-gradient(90deg, rgba(225,255,239,.98), rgba(57,255,156,.78), transparent);
+    box-shadow: 0 0 8px rgba(57,255,156,.9), 0 0 22px rgba(57,255,156,.38);
+}
+
+#preloader .preloader-content::before { --ray-angle: -90deg; }
+#preloader .preloader-content::after { --ray-angle: 30deg; }
+#preloader .preloader-text-container::before { --ray-angle: 150deg; }
+
+#preloader.warp-out .preloader-content {
+    animation: preloaderPanelFracture 1050ms cubic-bezier(.16,1,.3,1) both;
+}
+
+#preloader.warp-out .preloader-content::before,
+#preloader.warp-out .preloader-content::after,
+#preloader.warp-out .preloader-text-container::before {
+    animation: preloaderRayLaunch 850ms cubic-bezier(.16,1,.3,1) both;
+}
+
+@keyframes preloaderRayLaunch {
+    0% {
+        opacity: 0;
+        transform: rotate(var(--ray-angle)) scaleX(.02);
+    }
+    18% { opacity: 1; }
+    100% {
+        opacity: 0;
+        transform: rotate(var(--ray-angle)) scaleX(1.9);
+    }
+}
+
+@keyframes preloaderPanelFracture {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        clip-path: inset(0 0 0 0);
+        filter: brightness(1);
+    }
+    42% {
+        opacity: 1;
+        transform: scale(1.025);
+        clip-path: polygon(0 0, 49.5% 0, 50% 48%, 50.5% 0, 100% 0, 100% 100%, 50.5% 100%, 50% 52%, 49.5% 100%, 0 100%);
+        filter: brightness(1.7);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.08);
+        clip-path: polygon(0 0, 49.5% 0, 50% 48%, 50.5% 0, 100% 0, 100% 100%, 50.5% 100%, 50% 52%, 49.5% 100%, 0 100%);
+        filter: brightness(1.3) blur(3px);
+    }
+}
+
+@media (max-width: 600px) {
+    .navbar-wrapper { top: 12px; padding: 0 10px; }
+    :is(.glass-nav, .glass-navbar) {
+        width: 100%;
+        max-width: 100%;
+        min-height: 54px;
+        padding: 7px 8px;
+        border-radius: 13px;
+    }
+    :is(.glass-nav, .glass-navbar) .nav-pills { gap: 3px; }
+    :is(.glass-nav, .glass-navbar) .nav-pill {
+        padding: 8px 9px;
+        font-size: .78rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #preloader.warp-out .preloader-content,
+    #preloader.warp-out .preloader-content::before,
+    #preloader.warp-out .preloader-content::after,
+    #preloader.warp-out .preloader-text-container::before {
+        animation-duration: 1ms !important;
     }
 }
