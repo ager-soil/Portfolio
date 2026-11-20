@@ -46,6 +46,7 @@ portfolio/
 └── js/
     ├── preloader.js
     ├── 3d-card.js
+    ├── cyber-network.js
     ├── dynamic-rotator.js
     ├── projects-data.js
     └── app.js
@@ -79,23 +80,7 @@ The following code is used inside the HTML `<head>`:
 - [x] Dynamic role rotator
 - [x] Project filtering system
 - [x] Custom SVG favicon
-- [ ] Dedicated audio system
-- [ ] Additional interactive visual effects
-
-## Future Plans
-
-Some ideas for future improvements include:
-
-- Advanced liquid-glass effects
-- Dynamic theme and hue customization
-- More expressive animations and transitions
-- A dedicated modular audio system
-
-## Design Philosophy
-
-The portfolio aims to combine technology, creativity, and personal identity in one place.
-
-The existing dark cosmic aesthetic, glassmorphism elements, and interactive components are intentional parts of the design. Future improvements will build upon this visual identity rather than replacing it entirely.
+- [x] Additional interactive visual effects
 
 ## Author
 
