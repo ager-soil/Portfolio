@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
           <h3>${project.title}</h3>
           <p>${project.description}</p>
           <div class="project-links">
-            <a href="${project.liveUrl}" class="project-link" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-            <a href="${project.githubUrl}" class="project-link" target="_blank"><i class="fa-brands fa-github"></i> Code</a>
+            <a href="${project.liveUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+            <a href="${project.githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code</a>
           </div>
         </div>
       `;
@@ -38,37 +38,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
-  // Initial render
   renderProjects();
 
-  // Filter Button Events
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const filterValue = btn.getAttribute('data-filter');
-      renderProjects(filterValue);
+      renderProjects(btn.getAttribute('data-filter'));
     });
   });
 
-  // --- 3. Active Nav Link Highlight on Scroll ---
-  const sections = document.querySelectorAll('.section');
+  // Include the Journey timeline in scroll-aware navigation.
+  const sections = document.querySelectorAll('.section, .journey-section');
   const navPills = document.querySelectorAll('.nav-pill');
 
   window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 200;
-      if (window.scrollY >= sectionTop) {
+      if (window.scrollY >= section.offsetTop - 200) {
         current = section.getAttribute('id');
       }
     });
 
     navPills.forEach(pill => {
-      pill.classList.remove('active');
-      if (pill.getAttribute('href') === `#${current}`) {
-        pill.classList.add('active');
-      }
+      pill.classList.toggle('active', pill.getAttribute('href') === `#${current}`);
     });
-  });
+  }, { passive: true });
 });
