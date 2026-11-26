@@ -5,7 +5,7 @@ A personal interactive portfolio showcasing my education and interests.
 ## Features
 
 - Responsive portfolio design
-- Dark cosmic-inspired visual theme
+- Emerald cyber-network visual theme with layered liquid-glass surfaces
 - Glassmorphism UI and glowing effects
 - Animated role/title rotator
 - Interactive 3D profile card
