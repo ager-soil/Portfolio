@@ -226,3 +226,67 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { scroll-behavior: auto!important; transition-duration: .01ms!important; animation-duration: .01ms!important; }
 }
+
+
+/* =========================================================
+   NAV PILL — SLIDING ACTIVE SELECTOR
+   The indicator is positioned by app.js using actual link bounds,
+   so it follows each option's width and works across breakpoints.
+   ========================================================= */
+:is(.glass-nav, .glass-navbar) {
+  position: relative;
+  isolation: isolate;
+}
+:is(.glass-nav, .glass-navbar) .nav-pills {
+  position: relative;
+  z-index: 1;
+}
+:is(.glass-nav, .glass-navbar) .nav-pill {
+  position: relative;
+  z-index: 2;
+  background: transparent !important;
+  border-color: transparent !important;
+  transition: color .28s ease, transform .28s ease, opacity .28s ease;
+}
+:is(.glass-nav, .glass-navbar) .nav-pill:not(.active) {
+  opacity: .72;
+}
+:is(.glass-nav, .glass-navbar) .nav-pill:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+:is(.glass-nav, .glass-navbar) .nav-pill.active {
+  color: #f2f5ec;
+  opacity: 1;
+}
+:is(.glass-nav, .glass-navbar) .nav-indicator {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  border: 1px solid rgba(226,255,177,.72);
+  border-radius: 10px;
+  background: linear-gradient(135deg,rgba(199,243,107,.27),rgba(199,243,107,.12));
+  box-shadow:
+    0 0 0 1px rgba(199,243,107,.08),
+    0 5px 20px rgba(157,216,61,.16),
+    inset 0 1px rgba(255,255,255,.24);
+  transition:
+    transform .48s cubic-bezier(.22,1,.36,1),
+    width .42s cubic-bezier(.22,1,.36,1),
+    height .42s cubic-bezier(.22,1,.36,1),
+    opacity .18s ease;
+  will-change: transform, width, height;
+}
+:is(.glass-nav, .glass-navbar) .nav-indicator.is-ready {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(.glass-nav, .glass-navbar) .nav-indicator,
+  :is(.glass-nav, .glass-navbar) .nav-pill {
+    transition-duration: .01ms !important;
+  }
+}
