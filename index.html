@@ -115,8 +115,11 @@
 
   <!-- Fixed Glass Navbar -->
   <header class="navbar-wrapper">
-    <nav class="glass-navbar">
-      <ul class="nav-pills" aria-label="Main navigation">
+    <nav class="glass-navbar" aria-label="Main navigation">
+      <button class="nav-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-pills" id="primary-navigation" aria-label="Main navigation">
         <li><a href="#hero" class="nav-pill active"><span>Home</span></a></li>
         <li><a href="#journey" class="nav-pill"><span>Journey</span></a></li>
         <li><a href="#skills-3d" class="nav-pill"><span>Skills</span></a></li>
