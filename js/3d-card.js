@@ -1,33 +1,63 @@
-// Three.js Background Canvas & 3D Interactive Card Tilt/Specular Effect
+// Smooth 3D profile-card tilt and pointer-driven specular lighting.
 document.addEventListener('DOMContentLoaded', () => {
-  // --- 2. Interactive 3D Trading Card Tilt & Specular Lighting ---
   const card = document.getElementById('trading-card');
-  const cardWrapper = document.querySelector('.card-3d-wrapper');
+  const wrapper = document.querySelector('.card-3d-wrapper');
+  if (!card || !wrapper) return;
 
-  if (card && cardWrapper) {
-    cardWrapper.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = ((y - centerY) / centerY) * -15; // Max 15 deg tilt
-      const rotateY = ((x - centerX) / centerX) * 15;
-
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
-      card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-    });
-
-    cardWrapper.addEventListener('mouseleave', () => {
-      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
-      card.style.transition = 'transform 0.5s ease';
-    });
-
-    cardWrapper.addEventListener('mouseenter', () => {
-      card.style.transition = 'none';
-    });
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (reduceMotion || !finePointer) {
+    card.style.transform = 'none';
+    return;
   }
+
+  let frame = 0;
+  let pointerX = 50;
+  let pointerY = 0;
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let active = false;
+
+  const render = () => {
+    frame = 0;
+    currentX += (targetX - currentX) * 0.16;
+    currentY += (targetY - currentY) * 0.16;
+    card.style.transform = 'perspective(1100px) rotateX(' + currentX.toFixed(2) +
+      'deg) rotateY(' + currentY.toFixed(2) + 'deg)';
+    card.style.setProperty('--mouse-x', pointerX + '%');
+    card.style.setProperty('--mouse-y', pointerY + '%');
+
+    if (active || Math.abs(currentX) > 0.04 || Math.abs(currentY) > 0.04) {
+      frame = window.requestAnimationFrame(render);
+    }
+  };
+
+  const schedule = () => {
+    if (!frame) frame = window.requestAnimationFrame(render);
+  };
+
+  wrapper.addEventListener('pointermove', event => {
+    if (event.pointerType === 'touch') return;
+    const rect = card.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (event.clientX - rect.left) / rect.width));
+    const y = Math.max(0, Math.min(1, (event.clientY - rect.top) / rect.height));
+    pointerX = x * 100;
+    pointerY = y * 100;
+    targetX = (0.5 - y) * 12;
+    targetY = (x - 0.5) * 12;
+    active = true;
+    schedule();
+  }, { passive: true });
+
+  const reset = () => {
+    active = false;
+    targetX = 0;
+    targetY = 0;
+    schedule();
+  };
+
+  wrapper.addEventListener('pointerleave', reset, { passive: true });
+  wrapper.addEventListener('pointercancel', reset, { passive: true });
 });
