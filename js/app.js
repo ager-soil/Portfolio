@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
       navIndicator.style.height = targetHeight;
       navIndicator.classList.add('is-ready');
 
-      indicatorAnimation = navIndicator.animate([
+      const currentAnimation = navIndicator.animate([
         from,
         { transform: targetTransform, width: targetWidth, height: targetHeight }
       ], {
@@ -107,7 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
         easing: 'cubic-bezier(.22, 1.28, .36, 1)',
         fill: 'both'
       });
-      indicatorAnimation.onfinish = () => {
+      indicatorAnimation = currentAnimation;
+      currentAnimation.onfinish = () => {
+        if (indicatorAnimation !== currentAnimation) return;
+        currentAnimation.cancel();
         indicatorAnimation = null;
       };
     };
