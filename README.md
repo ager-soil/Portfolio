@@ -1,92 +1,85 @@
-# Developer Portfolio
+# Abhinaba Chatterjee — Portfolio
 
-A personal interactive portfolio showcasing my education and interests.
+A responsive, interactive personal portfolio presenting my academic journey, skills, selected projects, and interests across web development, agriculture, cybersecurity, geoinformatics, hydroponics, and agricultural technology.
 
-## Features
+🌐 **Live site:** [ager-soil.github.io/Portfolio](https://ager-soil.github.io/Portfolio/)
 
-- Responsive portfolio design
-- Emerald cyber-network visual theme with layered liquid-glass surfaces
-- Glassmorphism UI and glowing effects
-- Animated role/title rotator
-- Interactive 3D profile card
-- Project showcase with category filters
-- Scroll-aware navigation highlighting
-- Unified **My Journey** timeline
-- Custom SVG favicon
-- Interactive visual elements and animations
+## Highlights
 
-## Technology Stack
+- Responsive single-page portfolio with dedicated **Home**, **Journey**, **Skills**, **Projects**, and **Contact** sections.
+- Dark forest-inspired visual system with liquid-glass surfaces, layered highlights, and subtle brass accents.
+- Animated cyber-network background.
+- Interactive 3D profile card with pointer-responsive tilt and lighting.
+- Dynamic role/title rotator and animated preloader.
+- Project showcase populated from a separate data file, with category filters.
+- Scroll-aware desktop navigation and a compact glass-style hamburger menu on mobile.
+- Custom SVG **AC** monogram favicon.
+- Search and social-sharing metadata, including Open Graph and structured Person data.
 
-The portfolio uses modern frontend technologies and animation libraries.
+## Built With
 
-- **HTML5** — Website structure
-- **CSS3** — Styling, responsive layouts, and visual effects
-- **JavaScript** — Interactive functionality
-- **Three.js** — 3D visual effects
-- **GSAP** — Animations and transitions
-- **Google Fonts** — Typography
-- **Font Awesome** — Icons
+| Technology | Use |
+|---|---|
+| HTML5 | Semantic page structure and metadata |
+| CSS3 | Responsive layouts, visual system, glass effects, and animation |
+| JavaScript | Navigation, interactions, project rendering, and UI behavior |
+| Three.js | 3D and visual effects |
+| GSAP | Animation support |
+| Google Fonts | Space Grotesk, DM Sans, and IBM Plex Mono |
+| Font Awesome | Interface icons |
 
-External libraries are currently loaded through CDN links.
+Three.js, GSAP, Google Fonts, and Font Awesome are loaded from external CDNs. No build step or package installation is required for the current static site.
 
-## Project Structure
+## Repository Structure
 
-portfolio/
-│
+```text
+Portfolio/
 ├── index.html
 ├── README.md
-├── PORTFOLIO_MEMORY_CONTEXT.md
 ├── favicon.svg
-│
+├── robots.txt
+├── sitemap.xml
+├── googlee6878bd20d3c0584.html
 ├── css/
 │   ├── main.css
 │   ├── components.css
-│   └── 3d-card.css
-│
+│   ├── 3d-card.css
+│   ├── liquid-glass.css
+│   └── portfolio-refresh.css
 └── js/
-    ├── preloader.js
+    ├── app.js
     ├── 3d-card.js
     ├── cyber-network.js
     ├── dynamic-rotator.js
-    ├── projects-data.js
-    └── app.js
-    
-## Running the Project Locally
+    ├── preloader.js
+    └── projects-data.js
+```
 
-This is currently a frontend-only static website.
+## Run Locally
 
-1. Clone or download this repository.
-2. Open the project folder in your code editor.
-3. Open `index.html` in your browser.
+This is a static HTML, CSS, and JavaScript project.
 
-Alternatively, use the **Live Server** extension in Visual Studio Code for local development.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/ager-soil/Portfolio.git
+   ```
+2. Open the project folder.
+3. Open `index.html` in a browser, or run it with the **Live Server** extension in Visual Studio Code.
 
-## Favicon
+An internet connection is needed for the external CDN libraries and web fonts.
 
-The portfolio uses a custom SVG favicon.
+## Deployment
 
-The `favicon.svg` file is stored in the root directory alongside `index.html`.
+The live portfolio is hosted with **GitHub Pages** from the repository's `main` branch.
 
-The following code is used inside the HTML `<head>`:
-
-<link rel="icon" href="./favicon.svg?v=2" type="image/svg+xml">
-
-## Current Development Status
-
-- [x] Initial portfolio structure
-- [x] Dark cosmic visual theme
-- [x] Glassmorphism design elements
-- [x] Interactive 3D profile card
-- [x] Dynamic role rotator
-- [x] Project filtering system
-- [x] Custom SVG favicon
-- [x] Additional interactive visual effects
+Changes pushed to `main` are published by GitHub Pages. Deployment and browser cache updates may take a little time.
 
 ## Author
 
-**Abhinaba Chatterjee**
-
+**Abhinaba Chatterjee**  
 B.Sc. (Honours) Agriculture  
 Sister Nivedita University
 
-*Designed and developed with curiosity, creativity, and a passion for technology.*
+---
+
+Designed and developed with curiosity, creativity, and a passion for technology.
