@@ -48,60 +48,106 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Include the Journey timeline in scroll-aware navigation.
-  const sections = document.querySelectorAll('.section, .journey-section');
-  const navPills = document.querySelectorAll('.nav-pill');
+  // Stable sliding navigation indicator + scroll-aware active section.
+  const navPills = Array.from(document.querySelectorAll('.nav-pill'));
   const navbar = document.querySelector('.glass-navbar, .glass-nav');
-  const navList = navbar?.querySelector('.nav-pills');
   let navIndicator = navbar?.querySelector('.nav-indicator');
+  let activePill = null;
+  let navFrame = 0;
 
-  if (navbar && navList && !navIndicator) {
-    navIndicator = document.createElement('span');
-    navIndicator.className = 'nav-indicator';
-    navIndicator.setAttribute('aria-hidden', 'true');
-    navbar.appendChild(navIndicator);
+  if (navbar && navPills.length) {
+    if (!navIndicator) {
+      navIndicator = document.createElement('span');
+      navIndicator.className = 'nav-indicator';
+      navIndicator.setAttribute('aria-hidden', 'true');
+      navbar.appendChild(navIndicator);
+    }
+
+    const positionIndicator = (pill) => {
+      if (!navbar || !navIndicator || !pill) return;
+      const navRect = navbar.getBoundingClientRect();
+      const pillRect = pill.getBoundingClientRect();
+      navIndicator.style.width = pillRect.width + 'px';
+      navIndicator.style.height = pillRect.height + 'px';
+      navIndicator.style.transform =
+        'translate3d(' + (pillRect.left - navRect.left) + 'px,' +
+        (pillRect.top - navRect.top) + 'px,0)';
+      navIndicator.classList.add('is-ready');
+    };
+
+    const setActiveNav = (pill) => {
+      if (!pill || pill === activePill) return;
+      activePill = pill;
+      navPills.forEach(item => {
+        const selected = item === pill;
+        item.classList.toggle('active', selected);
+        if (selected) item.setAttribute('aria-current', 'location');
+        else item.removeAttribute('aria-current');
+      });
+      positionIndicator(pill);
+    };
+
+    navPills.forEach(pill => {
+      pill.addEventListener('click', () => setActiveNav(pill));
+    });
+
+    const updateFromScroll = () => {
+      navFrame = 0;
+      const threshold = Math.max(120, (navbar?.getBoundingClientRect().bottom || 70) + 70);
+      let currentSection = null;
+      document.querySelectorAll('.section[id], .journey-section[id]').forEach(section => {
+        if (section.getBoundingClientRect().top <= threshold) currentSection = section;
+      });
+      if (!currentSection) currentSection = document.querySelector('#hero');
+      const match = navPills.find(pill => pill.getAttribute('href') === '#' + currentSection?.id);
+      if (match) setActiveNav(match);
+    };
+
+    window.addEventListener('scroll', () => {
+      if (!navFrame) navFrame = requestAnimationFrame(updateFromScroll);
+    }, { passive: true });
+
+    const realign = () => positionIndicator(activePill || navbar.querySelector('.nav-pill.active') || navPills[0]);
+    window.addEventListener('resize', realign, { passive: true });
+    if (document.fonts?.ready) document.fonts.ready.then(realign);
+    requestAnimationFrame(() => {
+      setActiveNav(navbar.querySelector('.nav-pill.active') || navPills[0]);
+      updateFromScroll();
+    });
   }
 
-  const moveNavIndicator = (activePill) => {
-    if (!navbar || !navIndicator || !activePill) return;
-    const navRect = navbar.getBoundingClientRect();
-    const pillRect = activePill.getBoundingClientRect();
-    navIndicator.style.width = `${pillRect.width}px`;
-    navIndicator.style.height = `${pillRect.height}px`;
-    navIndicator.style.transform = `translate3d(${pillRect.left - navRect.left}px, ${pillRect.top - navRect.top}px, 0)`;
-    navIndicator.classList.add('is-ready');
-  };
+  // Reveal content once as it enters view; avoid permanent scroll listeners.
+  const revealTargets = document.querySelectorAll(
+    '.journey-year,.skills-box,.project-card,.contact-card,.section-header,.journey-header'
+  );
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    revealTargets.forEach(node => node.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
 
-  const setActiveNav = (activePill) => {
-    navPills.forEach(pill => {
-      const isActive = pill === activePill;
-      pill.classList.toggle('active', isActive);
-      if (isActive) pill.setAttribute('aria-current', 'location');
-      else pill.removeAttribute('aria-current');
+    revealTargets.forEach((node, index) => {
+      node.classList.add('reveal-on-scroll');
+      node.style.setProperty('--reveal-delay', Math.min(index % 4, 3) * 65 + 'ms');
+      revealObserver.observe(node);
     });
-    moveNavIndicator(activePill);
-  };
+  }
 
-  navPills.forEach(pill => {
-    pill.addEventListener('click', () => setActiveNav(pill));
-  });
-
-  window.addEventListener('resize', () => {
-    moveNavIndicator(navbar?.querySelector('.nav-pill.active'));
-  }, { passive: true });
-
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      if (window.scrollY >= section.offsetTop - 200) {
-        current = section.getAttribute('id');
-      }
+  // Pointer position drives a restrained moving reflection on glass panels.
+  const glassTargets = document.querySelectorAll('.glass-card,.skills-box,.project-card,.journey-card,.contact-card');
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    glassTargets.forEach(panel => {
+      panel.addEventListener('pointermove', event => {
+        const rect = panel.getBoundingClientRect();
+        panel.style.setProperty('--glass-x', ((event.clientX - rect.left) / rect.width * 100) + '%');
+        panel.style.setProperty('--glass-y', ((event.clientY - rect.top) / rect.height * 100) + '%');
+      }, { passive: true });
     });
-
-    const activePill = Array.from(navPills).find(pill => pill.getAttribute('href') === `#${current}`);
-    if (activePill) setActiveNav(activePill);
-  }, { passive: true });
-
-  // Position the selector after fonts/layout settle and keep it aligned on resize.
-  requestAnimationFrame(() => moveNavIndicator(navbar?.querySelector('.nav-pill.active')));
+  }
 });
