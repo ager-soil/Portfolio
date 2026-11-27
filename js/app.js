@@ -48,12 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Stable sliding navigation indicator + scroll-aware active section.
+  // Fluid, spring-eased navigation glass + scroll-aware active section.
   const navPills = Array.from(document.querySelectorAll('.nav-pill'));
   const navbar = document.querySelector('.glass-navbar, .glass-nav');
   let navIndicator = navbar?.querySelector('.nav-indicator');
   let activePill = null;
   let navFrame = 0;
+  let indicatorAnimation = null;
 
   if (navbar && navPills.length) {
     if (!navIndicator) {
@@ -63,16 +64,52 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.appendChild(navIndicator);
     }
 
-    const positionIndicator = (pill) => {
+    const positionIndicator = (pill, animate = true) => {
       if (!navbar || !navIndicator || !pill) return;
       const navRect = navbar.getBoundingClientRect();
       const pillRect = pill.getBoundingClientRect();
-      navIndicator.style.width = pillRect.width + 'px';
-      navIndicator.style.height = pillRect.height + 'px';
-      navIndicator.style.transform =
-        'translate3d(' + (pillRect.left - navRect.left) + 'px,' +
-        (pillRect.top - navRect.top) + 'px,0)';
+      const x = pillRect.left - navRect.left;
+      const y = pillRect.top - navRect.top;
+      const targetTransform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+      const targetWidth = pillRect.width + 'px';
+      const targetHeight = pillRect.height + 'px';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!animate || reduceMotion || !navIndicator.classList.contains('is-ready') ||
+          typeof navIndicator.animate !== 'function') {
+        if (indicatorAnimation) indicatorAnimation.cancel();
+        indicatorAnimation = null;
+        navIndicator.style.transform = targetTransform;
+        navIndicator.style.width = targetWidth;
+        navIndicator.style.height = targetHeight;
+        navIndicator.classList.add('is-ready');
+        return;
+      }
+
+      const computed = getComputedStyle(navIndicator);
+      const from = {
+        transform: computed.transform === 'none' ? targetTransform : computed.transform,
+        width: computed.width,
+        height: computed.height
+      };
+      if (indicatorAnimation) indicatorAnimation.cancel();
+
+      navIndicator.style.transform = targetTransform;
+      navIndicator.style.width = targetWidth;
+      navIndicator.style.height = targetHeight;
       navIndicator.classList.add('is-ready');
+
+      indicatorAnimation = navIndicator.animate([
+        from,
+        { transform: targetTransform, width: targetWidth, height: targetHeight }
+      ], {
+        duration: 720,
+        easing: 'cubic-bezier(.22, 1.28, .36, 1)',
+        fill: 'both'
+      });
+      indicatorAnimation.onfinish = () => {
+        indicatorAnimation = null;
+      };
     };
 
     const setActiveNav = (pill) => {
@@ -84,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (selected) item.setAttribute('aria-current', 'location');
         else item.removeAttribute('aria-current');
       });
-      positionIndicator(pill);
+      positionIndicator(pill, true);
     };
 
     navPills.forEach(pill => {
@@ -93,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateFromScroll = () => {
       navFrame = 0;
-      const threshold = Math.max(120, (navbar?.getBoundingClientRect().bottom || 70) + 70);
+      const threshold = Math.max(120, navbar.getBoundingClientRect().bottom + 70);
       let currentSection = null;
       document.querySelectorAll('.section[id], .journey-section[id]').forEach(section => {
         if (section.getBoundingClientRect().top <= threshold) currentSection = section;
@@ -107,7 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!navFrame) navFrame = requestAnimationFrame(updateFromScroll);
     }, { passive: true });
 
-    const realign = () => positionIndicator(activePill || navbar.querySelector('.nav-pill.active') || navPills[0]);
+    const realign = () => positionIndicator(
+      activePill || navbar.querySelector('.nav-pill.active') || navPills[0],
+      false
+    );
     window.addEventListener('resize', realign, { passive: true });
     if (document.fonts?.ready) document.fonts.ready.then(realign);
     requestAnimationFrame(() => {
@@ -116,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Reveal content once as it enters view; avoid permanent scroll listeners.
+    // Reveal content once as it enters view; avoid permanent scroll listeners.
   const revealTargets = document.querySelectorAll(
     '.journey-year,.skills-box,.project-card,.contact-card,.section-header,.journey-header'
   );
