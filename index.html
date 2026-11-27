@@ -67,7 +67,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- FontAwesome Icons CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -83,15 +83,31 @@
 <body class="dark-theme">
 
 
-<div id="preloader">
-
-    <div class="preloader-content">
-
-        <div class="preloader-text-container">
-            <span id="casino-text">INITIALIZING INFOSPACE</span>
-        </div>
-
+<div id="preloader" aria-label="Loading portfolio" role="status">
+    <div class="preloader-atmosphere" aria-hidden="true">
+      <span class="preloader-orbit orbit-one"></span>
+      <span class="preloader-orbit orbit-two"></span>
+      <span class="preloader-orbit orbit-three"></span>
+      <span class="preloader-node node-one"></span>
+      <span class="preloader-node node-two"></span>
+      <span class="preloader-node node-three"></span>
+      <span class="preloader-crosshair"></span>
     </div>
+    <div class="preloader-content">
+      <div class="preloader-kicker"><span class="preloader-live-dot"></span> SYSTEM BOOT SEQUENCE <span class="preloader-kicker-line"></span> 01 / 04</div>
+      <div class="preloader-emblem" aria-hidden="true">
+        <span class="emblem-ring"></span><span class="emblem-ring ring-inner"></span>
+        <span class="emblem-core"><i class="fa-solid fa-leaf"></i></span>
+        <span class="emblem-spark spark-a"></span><span class="emblem-spark spark-b"></span>
+      </div>
+      <div class="preloader-text-container">
+        <span class="preloader-label">ENVIRONMENT INITIALIZATION</span>
+        <span id="casino-text">INITIALIZING INFOSPACE</span>
+      </div>
+      <div class="preloader-progress-track"><span class="preloader-progress-fill"></span></div>
+      <div class="preloader-footer"><span>AGRI / TECH INTERFACE</span><span class="preloader-percent">00%</span><span>SECURE CONNECTION <i class="fa-solid fa-circle-check"></i></span></div>
+    </div>
+  </div>
 
 </div>
   
