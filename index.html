@@ -116,12 +116,12 @@
   <!-- Fixed Glass Navbar -->
   <header class="navbar-wrapper">
     <nav class="glass-navbar">
-      <ul class="nav-pills">
-        <li><a href="#hero" class="nav-pill active"><i class="fa-solid fa-house"></i> <span>Home</span></a></li>
-        <li><a href="#journey" class="nav-pill"><i class="fa-solid fa-route"></i> <span>Journey</span></a></li>
-        <li><a href="#skills-3d" class="nav-pill"><i class="fa-solid fa-microchip"></i> <span>Skills</span></a></li>
-        <li><a href="#projects" class="nav-pill"><i class="fa-solid fa-code-fork"></i> <span>Projects</span></a></li>
-        <li><a href="#contact" class="nav-pill"><i class="fa-solid fa-paper-plane"></i> <span>Contact</span></a></li>
+      <ul class="nav-pills" aria-label="Main navigation">
+        <li><a href="#hero" class="nav-pill active"><span>Home</span></a></li>
+        <li><a href="#journey" class="nav-pill"><span>Journey</span></a></li>
+        <li><a href="#skills-3d" class="nav-pill"><span>Skills</span></a></li>
+        <li><a href="#projects" class="nav-pill"><span>Projects</span></a></li>
+        <li><a href="#contact" class="nav-pill"><span>Contact</span></a></li>
       </ul>
     </nav>
   </header>
@@ -377,8 +377,22 @@
   </main>
 
   <!-- Footer -->
-  <footer>
-    <p>Made with 💕 by Abhinaba Chatterjee</p>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-signature">
+        <span class="footer-kicker">A PERSONAL INFOSPACE</span>
+        <p class="footer-name">Abhinaba <span>Chatterjee</span></p>
+      </div>
+      <div class="footer-note">
+        <span>DESIGNED WITH INTENTION</span>
+        <p>Made with care, curiosity, and a little bit of code.</p>
+      </div>
+      <a class="footer-top-link" href="#hero" aria-label="Back to top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Abhinaba Chatterjee</span>
+      <span>BUILT ON CURIOSITY <i aria-hidden="true"></i></span>
+    </div>
   </footer>
 
   <!-- External CDN Libraries (Three.js & GSAP) -->
