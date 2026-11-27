@@ -51,6 +51,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fluid, spring-eased navigation glass + scroll-aware active section.
   const navPills = Array.from(document.querySelectorAll('.nav-pill'));
   const navbar = document.querySelector('.glass-navbar, .glass-nav');
+  const menuToggle = navbar?.querySelector('.nav-menu-toggle');
+  const closeMobileMenu = () => {
+    if (!navbar || !menuToggle) return;
+    navbar.classList.remove('nav-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Open navigation menu');
+  };
+  if (navbar && menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navbar.classList.toggle('nav-open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+    navPills.forEach(pill => pill.addEventListener('click', closeMobileMenu));
+    document.addEventListener('click', event => {
+      if (!navbar.contains(event.target)) closeMobileMenu();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { closeMobileMenu(); menuToggle.focus(); }
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth > 700) closeMobileMenu(); }, { passive: true });
+  }
   let navIndicator = navbar?.querySelector('.nav-indicator');
   let activePill = null;
   let navFrame = 0;
