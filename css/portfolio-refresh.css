@@ -1072,3 +1072,8 @@ body.dark-theme {
 @media(prefers-reduced-motion:reduce) {
   :is(.glass-nav,.glass-navbar)::before {animation:none}
 }
+
+
+/* Keep direct finger movement available to the 3D card instead of browser gestures. */
+.card-3d-wrapper {touch-action:none}
+.card-3d:active .card-glass-glow {opacity:1}
