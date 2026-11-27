@@ -64,9 +64,9 @@ h1,h2,h3,h4,h5,h6 { color: var(--forest-white); letter-spacing: -.035em; }
 
 /* Spatial rhythm */
 .section { padding: 118px clamp(22px,7vw,112px) 86px; }
-.hero-section { min-height: 100svh; padding-top: 145px; }
+.hero-section { min-height: 100svh; padding-top: 88px; }
 .hero-layout {
-  width: min(1280px,100%); margin: 0 auto;
+  width: min(1280px,100%); margin: 0 auto; padding: 0 35px 20px;
   display: grid; grid-template-columns: minmax(0,1.2fr) minmax(300px,.8fr);
   align-items: center; gap: clamp(38px,7vw,100px);
 }
@@ -212,8 +212,8 @@ footer {
 }
 @media (max-width: 700px) {
   .section { padding: 104px 20px 66px; }
-  .hero-section { padding-top: 120px; }
-  .hero-layout { gap: 34px; }
+  .hero-section { padding-top: 78px; }
+  .hero-layout { padding: 0 22px 48px; gap: 34px; }
   .hero-title { font-size: clamp(2.45rem,10vw,3.6rem); }
   .hero-title .highlight-text { font-size: .68em; }
   .hero-actions { gap: 10px; }
