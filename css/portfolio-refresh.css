@@ -700,7 +700,8 @@ footer { color:rgba(233,230,217,.58);border:1px solid rgba(233,230,217,.12);back
   mask-composite:exclude;
 }
 .card-3d>* {position:relative;z-index:2}
-.card-glass-glow {z-index:3!important;mix-blend-mode:screen;opacity:0;transition:opacity .3s ease}
+/* Keep the pointer glow as an overlay, not a flex item in the card layout. */
+.card-3d>.card-glass-glow {position:absolute;inset:0;z-index:3!important;mix-blend-mode:screen;opacity:0;transition:opacity .3s ease;pointer-events:none}
 .card-3d:hover .card-glass-glow {opacity:1}
 .card-header,.card-avatar-container,.card-body,.card-footer {transform:translateZ(28px)}
 .card-avatar-container {transform:translateZ(42px)}
