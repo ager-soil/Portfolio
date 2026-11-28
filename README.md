@@ -14,7 +14,9 @@ A responsive, interactive personal portfolio presenting my academic journey, ski
 - Project showcase populated from a separate data file, with category filters.
 - Scroll-aware desktop navigation and a compact glass-style hamburger menu on mobile.
 - Custom SVG **AC** monogram favicon.
-- Search and social-sharing metadata, including Open Graph and structured Person data.
+- Search and social-sharing metadata, including Open Graph, Twitter cards, canonical URL, and structured Person data.
+- A `<noscript>` project fallback keeps key project descriptions available when JavaScript is unavailable.
+- Project cards are created with safe DOM APIs and text nodes rather than interpolating project data into HTML.
 
 ## Built With
 
@@ -28,7 +30,7 @@ A responsive, interactive personal portfolio presenting my academic journey, ski
 | Google Fonts | Space Grotesk, DM Sans, and IBM Plex Mono |
 | Font Awesome | Interface icons |
 
-Three.js, GSAP, Google Fonts, and Font Awesome are loaded from external CDNs. No build step or package installation is required for the current static site.
+Three.js, GSAP, Google Fonts, and Font Awesome are loaded from external CDNs. No build step or package installation is required for the current static site. External dependencies should be reviewed and updated deliberately; Subresource Integrity should be added when verified hashes are available for the exact pinned assets.
 
 ## Repository Structure
 
@@ -83,3 +85,11 @@ Sister Nivedita University
 ---
 
 Designed and developed with curiosity, creativity, and a passion for technology.
+
+
+## Security Notes
+
+- Project titles, descriptions, and tags are rendered as text nodes; project URLs are parsed and restricted to HTTP(S) or same-page anchors.
+- New-tab project links use `rel="noopener noreferrer"`.
+- The site is hosted on GitHub Pages. Repository files cannot configure per-site HTTP response headers such as Content-Security-Policy, Strict-Transport-Security, X-Content-Type-Options, or Permissions-Policy. A meta CSP is not a full substitute for an HTTP response header. Use a hosting or edge layer that supports custom response headers if stronger header control is required.
+- Automated public-web scans are useful signals but do not replace manual review, dependency monitoring, or browser testing.

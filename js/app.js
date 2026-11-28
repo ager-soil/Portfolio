@@ -5,35 +5,78 @@ document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('projects-container');
   const filterBtns = document.querySelectorAll('.filter-btn');
 
+  const createSafeProjectLink = (href, label, iconClass) => {
+    if (typeof href !== 'string' || !href.trim()) return null;
+
+    let parsedUrl;
+    try {
+      parsedUrl = new URL(href, window.location.href);
+    } catch {
+      return null;
+    }
+
+    const isLocalAnchor = href.startsWith('#') && parsedUrl.origin === window.location.origin;
+    if (!isLocalAnchor && !['https:', 'http:'].includes(parsedUrl.protocol)) return null;
+
+    const link = document.createElement('a');
+    link.className = 'project-link';
+    link.href = isLocalAnchor ? href : parsedUrl.href;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+
+    if (iconClass) {
+      const icon = document.createElement('i');
+      icon.className = iconClass;
+      icon.setAttribute('aria-hidden', 'true');
+      link.appendChild(icon);
+      link.appendChild(document.createTextNode(' '));
+    }
+    link.appendChild(document.createTextNode(label));
+    return link;
+  };
+
   const renderProjects = (filter = 'all') => {
     if (!container || typeof projectsData === 'undefined') return;
 
-    container.innerHTML = '';
+    container.replaceChildren();
 
-    const filteredData = filter === 'all' 
-      ? projectsData 
+    const filteredData = filter === 'all'
+      ? projectsData
       : projectsData.filter(item => item.category === filter);
 
     filteredData.forEach(project => {
-      const card = document.createElement('div');
+      const card = document.createElement('article');
       card.className = 'project-card';
-      
-      const tagsHtml = project.tags
-        .map(tag => `<span class="project-tag">${tag}</span>`)
-        .join('');
 
-      card.innerHTML = `
-        <div class="project-content">
-          <div class="project-tags">${tagsHtml}</div>
-          <h3>${project.title}</h3>
-          <p>${project.description}</p>
-          <div class="project-links">
-            <a href="${project.liveUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
-            <a href="${project.githubUrl}" class="project-link" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Code</a>
-          </div>
-        </div>
-      `;
+      const content = document.createElement('div');
+      content.className = 'project-content';
 
+      const tags = document.createElement('div');
+      tags.className = 'project-tags';
+      (Array.isArray(project.tags) ? project.tags : []).forEach(tag => {
+        const tagElement = document.createElement('span');
+        tagElement.className = 'project-tag';
+        tagElement.textContent = String(tag);
+        tags.appendChild(tagElement);
+      });
+
+      const title = document.createElement('h3');
+      title.textContent = String(project.title || 'Untitled project');
+
+      const description = document.createElement('p');
+      description.textContent = String(project.description || '');
+
+      content.append(tags, title, description);
+
+      const links = document.createElement('div');
+      links.className = 'project-links';
+      const liveLink = createSafeProjectLink(project.liveUrl, 'Live Demo', 'fa-solid fa-arrow-up-right-from-square');
+      const sourceLink = createSafeProjectLink(project.githubUrl, 'Code', 'fa-brands fa-github');
+      if (liveLink) links.appendChild(liveLink);
+      if (sourceLink) links.appendChild(sourceLink);
+      if (links.childElementCount) content.appendChild(links);
+
+      card.appendChild(content);
       container.appendChild(card);
     });
   };
